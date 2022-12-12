@@ -36,6 +36,6 @@ export class League {
     this.team1.teamName = team1;
     this.team2.teamName = team2;
     this.team3.teamName = team3;
-    this.team4.teamName = team4; 
+    this.team4.teamName = team4;
   }
 }
