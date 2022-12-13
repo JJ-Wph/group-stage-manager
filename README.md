@@ -1,6 +1,12 @@
-# ts-school
+# Group Stage Manager
+This is Table football league manager for two teams. 
 
-This template should help get you started developing with Vue 3 in Vite.
+Techstack:
+* Vue 3
+* Typescript
+* Vite
+* Pinia
+
 
 ## Recommended IDE Setup
 
