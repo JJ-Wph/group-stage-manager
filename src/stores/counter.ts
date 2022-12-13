@@ -30,7 +30,7 @@ export class League {
     goalBalance: 0,
   };
 
-  constructor(theName: string, theId: string, team1: object, team2: string, team3: string, team4: string,) {
+  constructor(theName: string, theId: string, team1: object, team2: object, team3: object, team4: object) {
     this.leagueName = theName;
     this.id = theId;
     this.team1.teamName = team1;
