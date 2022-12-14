@@ -4,9 +4,19 @@
     </header>
   
     <main>
-      <p>Dashboard placeholder</p>
+      <div v-if="!isLoaded">
+        <p>Enter your League ID</p>
+        <input type="text" placeholder="ID">
+      </div>
+      <div v-else>
+
+      </div>
     </main>
 </template>
 <script setup lang="ts">
+  import { ref } from 'vue';
+  
+  const isLoaded = ref<boolean>(false);
+
 
 </script>

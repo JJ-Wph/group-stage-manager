@@ -1,28 +1,28 @@
 export class League {
   leagueName: string;
   id: string;
-  team1: object = {
+  team1: Object = {
     teamName: '',
     points: 0,
     goalScored: 0,
     goalConceded: 0,
     goalBalance: 0,
   };
-  team2: object = {
+  team2: Object = {
     teamName: '',
     points: 0,
     goalScored: 0,
     goalConceded: 0,
     goalBalance: 0,
   };
-  team3: object = {
+  team3: Object = {
     teamName: '',
     points: 0,
     goalScored: 0,
     goalConceded: 0,
     goalBalance: 0,
   };
-  team4: object = {
+  team4: Object = {
     teamName: '',
     points: 0,
     goalScored: 0,
@@ -30,12 +30,12 @@ export class League {
     goalBalance: 0,
   };
 
-  constructor(theName: string, theId: string, team1: object, team2: object, team3: object, team4: object) {
+  constructor(theName: string, theId: string, team1: Object, team2: Object, team3: Object, team4: Object) {
     this.leagueName = theName;
     this.id = theId;
-    this.team1.teamName = team1;
-    this.team2.teamName = team2;
-    this.team3.teamName = team3;
-    this.team4.teamName = team4;
+    this.team1 = team1;
+    this.team2 = team2;
+    this.team3 = team3;
+    this.team4 = team4;
   }
 }
