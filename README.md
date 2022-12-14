@@ -1,5 +1,8 @@
 # Group Stage Manager
+
+
 This is Table football league manager for two teams. 
+Project is in **Pre-Alpha** version.
 
 Techstack:
 * Vue 3
