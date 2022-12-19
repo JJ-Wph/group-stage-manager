@@ -12,10 +12,28 @@
     </main>
 
     <main v-else>
-      <div v-for="league in leagueStore.leagues">
-        <h1>{{ league.leagueName }}</h1>
-        <p>{{ league.id }}</p>
-        <p>{{ league.team1.teamName }}</p>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>L.p.</td>
+              <td>Team</td>
+              <td>GF</td>
+              <td>GA</td>
+              <td>GF</td>
+              <td>Pts</td>
+            </tr>
+            <tr v-for="(item, index) in loadedLeague" :key="item.teamName">
+              <td>{{ index+1 }}</td>
+              <td>{{ item.teamName }}</td>
+              <td>{{ item.goalsScored }}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </main>
 
@@ -31,15 +49,17 @@
 
   const loadSpecificLeague = () => {
     let leaguesList = leagueStore.leagues;
-    
     for(let i = 0; i < leaguesList.length; i++) {
-      console.log(leaguesList[i].id)
+      // console.log(leaguesList[i].id)
       if(leaguesList[i].id === searchedId.value) {
-        loadedLeague.push(leaguesList[i]);
+        loadedLeague.push(leaguesList[i].teams);
+        console.log(leaguesList[i].teams)
+        isLoaded.value = true;
       }
     }
-    console.log(searchedId.value);
-    console.log(loadedLeague)
+    
+    // console.log(searchedId.value);
+    // console.log(loadedLeague)
   }
 
 
