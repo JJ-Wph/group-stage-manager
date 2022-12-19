@@ -1,33 +1,29 @@
 export class League {
   leagueName: string;
   id: string;
-  team1: Object = {
+  team1: any = {
     teamName: '',
     points: 0,
-    goalScored: 0,
-    goalConceded: 0,
-    goalBalance: 0,
+    goalsScored: 0,
+    goalsConceded: 0,
   };
-  team2: Object = {
+  team2: any = {
     teamName: '',
     points: 0,
-    goalScored: 0,
-    goalConceded: 0,
-    goalBalance: 0,
+    goaslScored: 0,
+    goalsConceded: 0,
   };
-  team3: Object = {
+  team3: any = {
     teamName: '',
     points: 0,
-    goalScored: 0,
-    goalConceded: 0,
-    goalBalance: 0,
+    goalsScored: 0,
+    goalsConceded: 0,
   };
-  team4: Object = {
+  team4: any = {
     teamName: '',
     points: 0,
-    goalScored: 0,
-    goalConceded: 0,
-    goalBalance: 0,
+    goalsScored: 0,
+    goalsConceded: 0,
   };
 
   constructor(theName: string, theId: string, team1: Object, team2: Object, team3: Object, team4: Object) {
