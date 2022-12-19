@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Hello Piłkarzyki League!</h1>
+    <h1>Piłkarzyki League!</h1>
   </header>
 
   <main>

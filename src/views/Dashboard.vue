@@ -1,6 +1,6 @@
 <template>
     <header>
-      <h1>Hello Piłkarzyki League!</h1>
+      <h1>Piłkarzyki League!</h1>
     </header>
   
     <main v-if="!isLoaded">
@@ -14,26 +14,25 @@
     <main v-else>
       <div>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <td>L.p.</td>
               <td>Team</td>
               <td>GF</td>
               <td>GA</td>
-              <td>GF</td>
               <td>Pts</td>
             </tr>
-            <tr v-for="(item, index) in loadedLeague" :key="item.teamName">
+            </thead>
+            <tbody>
+            <tr v-for="(item, index) in loadedLeague" :key="item.index">
               <td>{{ index+1 }}</td>
               <td>{{ item.teamName }}</td>
               <td>{{ item.goalsScored }}</td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ item.goalsConceded }}</td>
+              <td>{{ item.points }}</td>
             </tr>
           </tbody>
         </table>
-
       </div>
     </main>
 
@@ -42,19 +41,19 @@
   import { ref } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
-  const isLoaded = ref<boolean>(false);
   const leagueStore = useLeagueStore();
+  const isLoaded = ref<boolean>(false);
   const searchedId = ref<string>(''); 
   const loadedLeague = new Array;
 
   const loadSpecificLeague = () => {
     let leaguesList = leagueStore.leagues;
     for(let i = 0; i < leaguesList.length; i++) {
-      // console.log(leaguesList[i].id)
       if(leaguesList[i].id === searchedId.value) {
         loadedLeague.push(leaguesList[i].teams);
         console.log(leaguesList[i].teams)
         isLoaded.value = true;
+        console.log(loadedLeague);
       }
     }
     
