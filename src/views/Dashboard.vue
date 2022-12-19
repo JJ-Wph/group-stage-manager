@@ -44,16 +44,16 @@
   const leagueStore = useLeagueStore();
   const isLoaded = ref<boolean>(false);
   const searchedId = ref<string>(''); 
-  const loadedLeague = new Array;
+  const loadedLeague = ref<any[]>(null);
 
   const loadSpecificLeague = () => {
     let leaguesList = leagueStore.leagues;
     for(let i = 0; i < leaguesList.length; i++) {
       if(leaguesList[i].id === searchedId.value) {
-        loadedLeague.push(leaguesList[i].teams);
+        loadedLeague.value = leaguesList[i].teams;
         console.log(leaguesList[i].teams)
         isLoaded.value = true;
-        console.log(loadedLeague);
+        console.log(loadedLeague.value);
       }
     }
     
