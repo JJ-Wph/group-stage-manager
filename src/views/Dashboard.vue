@@ -32,10 +32,6 @@
               <td>{{ item.goalsConceded }}</td>
               <td>{{ item.points }}</td>
             </tr>
-            
-
-
-
           </tbody>
         </table>
       </div>
