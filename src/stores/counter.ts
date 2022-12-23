@@ -1,10 +1,9 @@
 export class League {
     leagueName: string = '';
-    id: any = '';
+    id: string = '';
     teams: any = [
       {
         teamName: '',
-        id: 1,
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
@@ -14,7 +13,6 @@ export class League {
       },
       {
         teamName: '',
-        id: 2,
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
@@ -24,7 +22,6 @@ export class League {
       },
       {
         teamName: '',
-        id: 3,
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
@@ -34,7 +31,6 @@ export class League {
       },
       {
         teamName: '',
-        id: 4,
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
@@ -53,11 +49,3 @@ export class League {
       this.teams[3].teamName = team4;
     };
 }
-
-
-// fixtures: Object = {};
-// this.fixtures = {
-//   0: [{ team1: this.teams[0].teamName, team2: this.teams[1].teamName }, { team1: this.teams[2].teamName, team2: this.teams[3].teamName }],
-//   1: [{ team1: this.teams[1].teamName, team2: this.teams[2].teamName }, { team1: this.teams[0].teamName, team2: this.teams[3].teamName }],
-//   2: [{ team1: this.teams[2].teamName, team2: this.teams[0].teamName }, { team1: this.teams[3].teamName, team2: this.teams[1].teamName }]
-// };

@@ -5,32 +5,44 @@ export const useLeagueStore = defineStore('store', {
     return {
       leagues: [
         {
-          leagueName: 'Random League',
-          id: '182e5',
+          leagueName: 'Portfolio League',
+          id: 'portf',
           teams: [
             {
-              teamName: 'team1',
-              points: 0,
-              goalsScored: 0,
-              goalsConceded: 0,
+              teamName: 'Sharks United',
+              points: 6,
+              goalsScored: 12,
+              goalsConceded: 3,
+              firstGameResult: 6,
+              secondGameResult: 6,
+              thirdGameResult: ''
             },
             {
-              teamName: 'team2',
+              teamName: 'Blue Whales',
               points: 0,
-              goaslScored: 0,
-              goalsConceded: 0,
+              goalsScored: 5,
+              goalsConceded: 11,
+              firstGameResult: 2,
+              secondGameResult: 3,
+              thirdGameResult: ''
             },
             {
-              teamName: 'team3',
-              points: 0,
-              goalsScored: 0,
-              goalsConceded: 0,
+              teamName: 'Space Lions',
+              points: 4,
+              goalsScored: 8,
+              goalsConceded: 6,
+              firstGameResult: 3,
+              secondGameResult: 5,
+              thirdGameResult: ''
             },
             {
-              teamName: 'team4',
-              points: 0,
-              goalsScored: 0,
-              goalsConceded: 0,
+              teamName: 'Netfinders',
+              points: 1,
+              goalsScored: 4,
+              goalsConceded: 9,
+              firstGameResult: 3,
+              secondGameResult: 1,
+              thirdGameResult: ''
             }
           ]
         }
