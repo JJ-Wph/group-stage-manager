@@ -34,7 +34,7 @@
             : 
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).firstGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-            <button @click="addResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
+            <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
           </div>
           <div class="pair">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
@@ -42,7 +42,7 @@
             :
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-            <button @click="addResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+            <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
           </div>
         </div>
         <div v-if="m2selected">
@@ -53,7 +53,7 @@
             : 
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-            <button @click="addResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</button>
+            <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</button>
           </div>
           <div class="pair">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
@@ -61,7 +61,7 @@
             : 
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).secondGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-            <button @click="addResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+            <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
           </div>
         </div>
         <div v-if="m3selected">
@@ -72,14 +72,15 @@
             : 
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
-            <button @click="addResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</button>
+            <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</button>
           </div>
           <div class="pair">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-            <p>{{loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult}}</p> 
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
             : 
-            <p>{{loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult}}</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+            <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
           </div>
         </div>
 
@@ -137,14 +138,14 @@
 
 </template>
 <script setup lang="ts">
-  import { ref, reactive } from 'vue';
+  import { ref } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
   const leagueStore = useLeagueStore();
   const isLoaded = ref<boolean>(false);
   const wrongId = ref<boolean>(false);
   const searchedId = ref<string>(''); 
-  let loadedLeague = reactive<any>('');
+  let loadedLeague = ref<any>('');
   let leagueTableToSort = [];
   const resultDiv = ref<boolean>(false);
   const selectedMatchday = ref<string>('');
@@ -191,7 +192,7 @@
     resultDiv.value = false;
   };
 
-  function addResult(homeTeam, awayTeam) {
+  function addFirstResult(homeTeam, awayTeam) {
     if(homeTeam.firstGameResult > awayTeam.firstGameResult) {
       homeTeam.points += 3;
       homeTeam.goalsScored += homeTeam.firstGameResult;
@@ -218,10 +219,65 @@
       console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
       console.log(homeTeam.points, awayTeam.points)
     }
-    console.log(loadedLeague.value)
-    console.log(loadedLeague.teams.find(({teamName}) => teamName === team1))
   }
 
+  function addSecondResult(homeTeam, awayTeam) {
+    if(homeTeam.secondGameResult > awayTeam.secondGameResult) {
+      homeTeam.points += 3;
+      homeTeam.goalsScored += homeTeam.secondGameResult;
+      homeTeam.goalsConceded += awayTeam.secondGameResult;
+      awayTeam.goalsScored += awayTeam.secondGameResult;
+      awayTeam.goalsConceded += homeTeam.secondGameResult;
+      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    } else if(homeTeam.secondGameResult < awayTeam.secondGameResult) {
+      awayTeam.points += 3;
+      homeTeam.goalsScored += homeTeam.secondGameResult;
+      homeTeam.goalsConceded += awayTeam.secondGameResult;
+      awayTeam.goalsScored += awayTeam.secondGameResult;
+      awayTeam.goalsConceded += homeTeam.secondGameResult;
+      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    } else if(homeTeam.secondGameResult === awayTeam.secondGameResult) {
+      homeTeam.points += 1;
+      awayTeam.points += 1;
+      homeTeam.goalsScored += homeTeam.secondGameResult;
+      homeTeam.goalsConceded += awayTeam.secondGameResult;
+      awayTeam.goalsScored += awayTeam.secondGameResult;
+      awayTeam.goalsConceded += homeTeam.secondGameResult;
+      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    }
+  }
+  
+  function addThirdResult(homeTeam, awayTeam) {
+    if(homeTeam.thirdGameResult > awayTeam.thirdGameResult) {
+      homeTeam.points += 3;
+      homeTeam.goalsScored += homeTeam.thirdGameResult;
+      homeTeam.goalsConceded += awayTeam.thirdGameResult;
+      awayTeam.goalsScored += awayTeam.thirdGameResult;
+      awayTeam.goalsConceded += homeTeam.thirdGameResult;
+      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    } else if(homeTeam.thirdGameResult < awayTeam.thirdGameResult) {
+      awayTeam.points += 3;
+      homeTeam.goalsScored += homeTeam.thirdGameResult;
+      homeTeam.goalsConceded += awayTeam.thirdGameResult;
+      awayTeam.goalsScored += awayTeam.thirdGameResult;
+      awayTeam.goalsConceded += homeTeam.thirdGameResult;
+      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    } else if(homeTeam.thirdGameResult === awayTeam.thirdGameResult) {
+      homeTeam.points += 1;
+      awayTeam.points += 1;
+      homeTeam.goalsScored += homeTeam.thirdGameResult;
+      homeTeam.goalsConceded += awayTeam.thirdGameResult;
+      awayTeam.goalsScored += awayTeam.thirdGameResult;
+      awayTeam.goalsConceded += homeTeam.thirdGameResult;
+      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
+      console.log(homeTeam.points, awayTeam.points)
+    }
+  }
 </script>
 <style>
 .results {
