@@ -1,7 +1,8 @@
 # Group Stage Manager
 
 
-This is Table football league manager for two teams. 
+Group Stage Manager is an football group stage manager for four teams. 
+
 Project is in **Beta** version.
 
 Techstack:
