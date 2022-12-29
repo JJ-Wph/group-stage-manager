@@ -2,7 +2,7 @@
 
 
 This is Table football league manager for two teams. 
-Project is in **Pre-Alpha** version.
+Project is in **Beta** version.
 
 Techstack:
 * Vue 3
