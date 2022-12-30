@@ -11,6 +11,11 @@ Techstack:
 * Vite
 * Pinia
 
+## Screen
+![obraz](https://user-images.githubusercontent.com/71273681/210081854-c7055066-78f7-445d-946a-b3961077a1f0.png)
+
+
+
 
 ## Recommended IDE Setup
 
