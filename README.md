@@ -1,8 +1,9 @@
 # Group Stage Manager
 
 
-This is Table football league manager for two teams. 
-Project is in **Pre-Alpha** version.
+Group Stage Manager is an football group stage manager for four teams. 
+
+Project is in **Beta** version.
 
 Techstack:
 * Vue 3
