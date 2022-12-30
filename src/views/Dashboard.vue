@@ -108,7 +108,6 @@
         </table>
 
       </div>
-      <!-- .sort((a, b) => (a.points > b.points) ? 1 : -1) -->
       <div>
         <div class="results">
           <h2>Matchday 1</h2>

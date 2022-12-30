@@ -1,14 +1,15 @@
 <template>
-    <header>
-      <h1>Hello Piłkarzyki League!</h1>
-    </header>
-  
-    <main>
-      <p>Welcome to the Group Stage Manager. A simple Typescript app to manage 4 teams Table Football league.</p>
-      <router-link to="/NewLeague"><button>Create New League</button></router-link>
-      <router-link to="/Dashboard"><button>Load League</button></router-link>
-    </main>
+  <div class="main">
+    <TheHeader />
+  </div>
 </template>
+<style scoped>
+.main {
+  display: flex;
+  flex-direction: row;
+}
+</style>
 <script setup lang="ts">
-
+import TheHeader from '@/components/TheHeader.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue'
 </script>
