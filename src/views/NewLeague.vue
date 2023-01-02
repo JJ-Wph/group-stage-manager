@@ -1,28 +1,30 @@
 <template>
-  <div class="main">
+  <div class="main-div">
     <TheHeader />
     <main>
-      <div class="main-container" v-if="formIsVisible">
-        <p v-if="formError">Please fill all inputs!</p>
+      <PrimaryContainer v-if="formIsVisible">
+        <h2>Please enter data</h2>
+        <p class="error" v-show="formError">Please fill all inputs!</p>
         <input type="text" placeholder="League name" v-model="newLeagueName">
-        <input type="text" placeholder="Team 1" v-model="team1">
-        <input type="text" placeholder="Team 2" v-model="team2">
-        <input type="text" placeholder="Team 3" v-model="team3">
-        <input type="text" placeholder="Team 4" v-model="team4">
-        <button @click="addLeague">Add League</button>
-      </div>
-      <div v-if="!formIsVisible">
-        <h2>Congratulations! League has been created. Your League ID is:</h2>
+        <input type="text" placeholder="Team 1 name" v-model="team1">
+        <input type="text" placeholder="Team 2 name" v-model="team2">
+        <input type="text" placeholder="Team 3 name" v-model="team3">
+        <input type="text" placeholder="Team 4 name" v-model="team4">
+        <PrimaryButton @click="addLeague">Add League</PrimaryButton>
+      </PrimaryContainer>
+      <PrimaryContainer v-if="!formIsVisible">
+        <h1>Congratulations! League has been created. Your League ID is:</h1>
         <h1>{{randomId}}</h1>
         <h2>Remember that!</h2>
         <router-link to="/Dashboard"><PrimaryButton>Go to dashboard</PrimaryButton></router-link>
-      </div>
+      </PrimaryContainer>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue';
+import PrimaryContainer from '@/components/PrimaryContainer.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import { ref } from 'vue'
 import { League } from '@/stores/counter'
@@ -51,19 +53,6 @@ function addLeague() {
     formIsVisible.value = false;
   } else {
     formError.value = true;
-    setTimeout(() => {
-      formError.value = false
-    }, 4000)
   }
 }
-
 </script>
-<style scoped>
-  .main {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    justify-content: space-between;
-    align-items: center;
-  }
-</style>

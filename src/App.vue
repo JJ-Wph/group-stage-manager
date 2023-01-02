@@ -10,17 +10,33 @@
   background-image: url('/background.svg');
   background-size: cover;
   display: flex;
+  align-items: center;
 }
 
-.main-container {
+.main-div { 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  width: 40rem;
-  height: 60rem;
-  margin: 0 30rem 0 0;
-  background-color: #003ea8d1;
-  border-radius: 1rem;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+}
+
+input[type=text] {
+  width: 18rem;
+  height: 4rem;
+  margin: 1rem;
+  border: 0;
+  border-bottom: 0.1rem solid #f4f1f1;
+  color: #f4f1f1;
+  background: none;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+.error{
+  color: red;
 }
 </style>
