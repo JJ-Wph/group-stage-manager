@@ -9,8 +9,8 @@
     </PrimaryContainer>
   </main>
 
-  <main v-else>
-    <div>
+  <main class="main-grid" v-else>
+    <div class="side-bar">
       <div>
         <button @click="resultDiv = !resultDiv">Add Results</button>
       </div>
@@ -23,7 +23,7 @@
         <button @click="activateMatchday">Accept</button>
       </div>
 
-      <div v-if="m1selected">
+      <div class="matchdays" v-if="m1selected">
         <h2>Matchday 1</h2>
         <div class="pair">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p>
@@ -80,21 +80,20 @@
           <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
         </div>
       </div>
-
+    </div>
+    <div class="table-container">
       <table>
-        <thead>
           <tr>
-            <td>L.p.</td>
-            <td>Team</td>
-            <td>GF</td>
-            <td>GA</td>
-            <td>GB</td>
-            <td>Pts</td>
+            <th>L.p.</th>
+            <th>Team</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GB</th>
+            <th>Pts</th>
           </tr>
-          </thead>
           <tbody>
-          <tr v-for="(item, index) in leagueTableToSort.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.index">
-            <td>{{ index+1 }}</td>
+          <tr v-for="(item, index) in loadedLeague.teams.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.index">
+            <td>{{ index + 1 + '.' }}</td>
             <td>{{ item.teamName }}</td>
             <td>{{ item.goalsScored }}</td>
             <td>{{ item.goalsConceded }}</td>
@@ -104,8 +103,8 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <div class="results">
+
+    <div class="matchday-schedule">
         <MatchdayContainer>
           <template #header>
             <h2>Matchday 1</h2>
@@ -141,7 +140,6 @@
           <p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
         </div>
       </MatchdayContainer>
-      </div>
     </div>
   </main>
 </template>
@@ -293,11 +291,62 @@
   }
 </script>
 <style>
-.results {
+.main-grid {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #080c0d;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0.4rem;
+    grid-row-gap: 0.4rem; 
+}
+
+.side-bar {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-area: 1 / 1 / 6 / 2;
+  background-color: #181f21;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 1 / 6 / 4 / 8;
+
+}
+
+table { 
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+tr > th {
+  height: 2rem;
+  background-color: #053273;
+}
+
+tr > td {
+  height: 6rem;
+  padding: 0;
+  background-color: #0c2634;
+}
+
+.div4 { grid-area: 1 / 4 / 4 / 6; }
+.div5 { grid-area: 1 / 2 / 4 / 4; }
+
+.matchday-schedule {
+  display: flex;
+  grid-area: 4 / 2 / 6 / 9;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #181f21;
 }
 
 .pair {
@@ -313,7 +362,4 @@ input[type=number] {
   width: 30px;
 }
 
-.resultdiv{
-  background-color: grey;
-}
 </style>

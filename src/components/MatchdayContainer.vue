@@ -14,23 +14,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30rem;
-    height: 25rem;
-    margin: 3rem;
+    width: 25%;
+    height: 80%;
     background-color: #002e487e;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
   }
 
   .header {
     display: flex;
     justify-content: center;
-    width: 30rem;
-    height: 5rem;
+    align-items: center;
+    width: 100%;
+    height: 20%;
     background-color: #003ea88a;
   }
   .main {
-    width: 30rem;
-    height: 20rem;
+    width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
