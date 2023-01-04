@@ -11,42 +11,48 @@
 
   <main class="main-grid" v-else>
     <div class="side-bar">
-      <div>
+      <h1>{{loadedLeague.leagueName}}</h1>
+
+      <div class="matchday-result-selector">
         <button @click="resultDiv = !resultDiv">Add Results</button>
-      </div>
-      <div class="resultdiv" v-if="resultDiv">
-        <select v-model="selectedMatchday">
-          <option value="Matchday 1">Matchday 1</option>
-          <option value="Matchday 2">Matchday 2</option>
-          <option value="Matchday 3">Matchday 3</option>
-        </select>
-        <button @click="activateMatchday">Accept</button>
+        <div v-if="resultDiv">
+          <select v-model="selectedMatchday">
+            <option value="Matchday 1">Matchday 1</option>
+            <option value="Matchday 2">Matchday 2</option>
+            <option value="Matchday 3">Matchday 3</option>
+          </select>
+          <button @click="activateMatchday">Accept</button>
+        </div>
       </div>
 
-      <div class="matchdays" v-if="m1selected">
+      <div class="matchday-result" v-if="m1selected">
         <h2>Matchday 1</h2>
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).firstGameResult">
-          : 
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).firstGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+        <div class="matchday-result-inputs">
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).firstGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).firstGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+          </div>
           <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
         </div>
+        <div class="matchday-result-inputs">
         <div class="pair">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
           <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).firstGameResult">
           :
           <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-          <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+        </div>
+        <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
         </div>
       </div>
-      <div v-if="m2selected">
+      <div class="matchday-result" v-if="m2selected">
         <h2>Matchday 2</h2>
         <div class="pair">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).secondGameResult">
+          <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team2).secondGameResult">
           : 
           <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
@@ -61,7 +67,7 @@
           <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
         </div>
       </div>
-      <div v-if="m3selected">
+      <div class="matchday-result" v-if="m3selected">
         <h2>Matchday 3</h2>
         <div class="pair">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
@@ -73,7 +79,7 @@
         </div>
         <div class="pair">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
+          <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
           : 
           <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
           <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
@@ -305,10 +311,14 @@
 .side-bar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   grid-area: 1 / 1 / 6 / 2;
   background-color: #181f21;
+}
+
+.side-bar > *{
+  margin: 4rem 0 4rem 0;
 }
 
 .table-container {
@@ -349,17 +359,47 @@ tr > td {
   background-color: #181f21;
 }
 
+.matchday-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matchday-result-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+}
+
+.matchday-result-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0 3rem 0;
+}
+
 .pair {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 30rem;
+  width: 100%;
 }
 
 input[type=number] {
-  height: 20px;
-  width: 30px;
+  text-align: center;
+  background-color: #053273;
+  color: #f4f1f1;
+  border: 0.1rem solid #053273;
+  outline: none;
+  height: 2rem;
+  width: 2rem;
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 </style>
