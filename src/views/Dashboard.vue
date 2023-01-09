@@ -92,9 +92,9 @@
           <tr>
             <th>L.p.</th>
             <th>Team</th>
-            <th>GF</th>
-            <th>GA</th>
-            <th>GB</th>
+            <th>G+</th>
+            <th>G-</th>
+            <th>G+/-</th>
             <th>Pts</th>
           </tr>
           <tbody>
@@ -325,7 +325,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: 1 / 6 / 4 / 8;
+  grid-area: 1 / 6 / 4 / 9;
 
 }
 
