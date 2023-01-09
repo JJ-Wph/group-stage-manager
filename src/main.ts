@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2';
-
 import { createRouter, createWebHistory } from 'vue-router';
+import { watch } from 'vue';
+
 import App from './App.vue';
 import Home from './views/Home.vue';
 import NewLeague from './views/NewLeague.vue';
@@ -10,8 +10,19 @@ import Dashboard from './views/Dashboard.vue';
 
 const app = createApp(App);
 const pinia = createPinia();
-const installPersistedStatePlugin = createPersistedStatePlugin();
-pinia.use((context) => installPersistedStatePlugin(context));
+
+if (localStorage.getItem("state")) {
+    pinia.state.value = JSON.parse(localStorage.getItem("state"));
+}
+
+watch(pinia.state,
+    (state) => {
+        localStorage.setItem("state", JSON.stringify(state));
+        console.log(localStorage);
+},
+{deep: true},
+);
+
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/newleague', name: 'NewLeague', component: NewLeague },

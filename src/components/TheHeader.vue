@@ -3,7 +3,7 @@
         <h1>Group Stage</h1>
         <h1>Manager</h1>
         <p>Welcome to Group Stage Manager</p> 
-        <p>Four-team league management app</p>
+        <p>App for Four-team league management</p>
         <div class="button-container">
             <router-link to="/NewLeague"><PrimaryButton>Create New League</PrimaryButton></router-link>
             <router-link to="/Dashboard"><PrimaryButton>Load League</PrimaryButton></router-link>

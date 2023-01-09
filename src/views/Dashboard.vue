@@ -155,7 +155,7 @@
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
   import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
   const leagueStore = useLeagueStore();
@@ -265,6 +265,7 @@
       console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
       console.log(homeTeam.points, awayTeam.points)
     }
+    console.log(localStorage);
   }
   
   function addThirdResult(homeTeam, awayTeam) {
