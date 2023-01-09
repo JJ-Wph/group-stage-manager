@@ -49,7 +49,5 @@ export const useLeagueStore = defineStore('store', {
       ]
     }
   },
-  persist: {
-    storage: localStorage,
-  }
+
 })
