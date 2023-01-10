@@ -11,17 +11,20 @@ import Dashboard from './views/Dashboard.vue';
 const app = createApp(App);
 const pinia = createPinia();
 
-if (localStorage.getItem("state")) {
-    pinia.state.value = JSON.parse(localStorage.getItem("state"));
-}
 
-watch(pinia.state,
+if(localStorage.getItem("store")) {
+    pinia.state.value = JSON.parse(localStorage.getItem("store"));
+  } else {
+    console.log()
+  }
+  
+  watch(
+    pinia.state,
     (state) => {
-        localStorage.setItem("state", JSON.stringify(state));
-        console.log(localStorage);
-},
-{deep: true},
-);
+      localStorage.setItem("store", JSON.stringify(state))
+    },
+    { deep: true }
+  )
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -34,6 +37,6 @@ const router = createRouter({
     routes
 })
 
-app.use(createPinia());
 app.use(router);
 app.mount('#app');
+app.use(createPinia());

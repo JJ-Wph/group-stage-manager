@@ -191,7 +191,6 @@
     }
   };
 
-
   function activateMatchday() {
     if(selectedMatchday.value === 'Matchday 1') {
       m1selected.value = true;
@@ -218,6 +217,7 @@
       awayTeam.goalsConceded += homeTeam.firstGameResult;
       console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
       console.log(homeTeam.points, awayTeam.points)
+      console.log(localStorage)
     } else if(homeTeam.firstGameResult < awayTeam.firstGameResult) {
       awayTeam.points += 3;
       homeTeam.goalsScored += homeTeam.firstGameResult;
@@ -226,6 +226,7 @@
       awayTeam.goalsConceded += homeTeam.firstGameResult;
       console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
       console.log(homeTeam.points, awayTeam.points)
+      console.log(localStorage)
     } else if(homeTeam.firstGameResult === awayTeam.firstGameResult) {
       homeTeam.points += 1;
       awayTeam.points += 1;
@@ -235,6 +236,7 @@
       awayTeam.goalsConceded += homeTeam.firstGameResult;
       console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
       console.log(homeTeam.points, awayTeam.points)
+      console.log(localStorage)
     }
   }
 
