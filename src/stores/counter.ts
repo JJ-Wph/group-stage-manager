@@ -1,42 +1,42 @@
 export class League {
-    leagueName: string = '';
-    id: string = '';
-    teams: any = [
+    leagueName: string = "";
+    id: string = "";
+    teams: Array<any> = [
       {
-        teamName: '',
+        teamName: "",
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
-        firstGameResult: '',
-        secondGameResult: '',
-        thirdGameResult: ''
+        firstGameResult: "",
+        secondGameResult: "",
+        thirdGameResult: ""
       },
       {
-        teamName: '',
+        teamName: "",
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
-        firstGameResult: '',
-        secondGameResult: '',
-        thirdGameResult: ''
+        firstGameResult: "",
+        secondGameResult: "",
+        thirdGameResult: ""
       },
       {
-        teamName: '',
+        teamName: "",
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
-        firstGameResult: '',
-        secondGameResult: '',
-        thirdGameResult: ''
+        firstGameResult: "",
+        secondGameResult: "",
+        thirdGameResult: ""
       },
       {
-        teamName: '',
+        teamName: "",
         points: 0,
         goalsScored: 0,
         goalsConceded: 0,
-        firstGameResult: '',
-        secondGameResult: '',
-        thirdGameResult: ''
+        firstGameResult: "",
+        secondGameResult: "",
+        thirdGameResult: ""
       }
     ];
     

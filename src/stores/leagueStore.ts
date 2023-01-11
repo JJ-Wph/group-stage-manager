@@ -1,47 +1,47 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia"
 export const useLeagueStore = defineStore("store", {
   state: () => {
     return {
       leagues: [
         {
-          leagueName: 'Portfolio League',
-          id: 'portf',
+          leagueName: "Portfolio League",
+          id: "portf",
           teams: [
             {
-              teamName: 'Sharks United',
+              teamName: "Sharks United",
               points: 6,
               goalsScored: 12,
               goalsConceded: 3,
               firstGameResult: 6,
               secondGameResult: 6,
-              thirdGameResult: ''
+              thirdGameResult: ""
             },
             {
-              teamName: 'Blue Whales',
+              teamName: "Blue Whales",
               points: 0,
               goalsScored: 5,
               goalsConceded: 11,
               firstGameResult: 2,
               secondGameResult: 3,
-              thirdGameResult: ''
+              thirdGameResult: ""
             },
             {
-              teamName: 'Space Lions',
+              teamName: "Space Lions",
               points: 4,
               goalsScored: 8,
               goalsConceded: 6,
               firstGameResult: 3,
               secondGameResult: 5,
-              thirdGameResult: ''
+              thirdGameResult: ""
             },
             {
-              teamName: 'Netfinders',
+              teamName: "Netfinders",
               points: 1,
               goalsScored: 4,
               goalsConceded: 9,
               firstGameResult: 3,
               secondGameResult: 1,
-              thirdGameResult: ''
+              thirdGameResult: ""
             }
           ]
         }

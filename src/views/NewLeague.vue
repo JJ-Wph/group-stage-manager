@@ -45,6 +45,7 @@ function addLeague() {
     let newLeague = new League(newLeagueName.value, randomId, team1.value, team2.value, team3.value, team4.value);
     console.log(randomId);
     console.log(newLeague);
+    console.log(typeof(newLeague))
     leagueStore.leagues.push(newLeague)
     team1.value = null;
     team2.value = null;

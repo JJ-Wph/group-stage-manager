@@ -98,7 +98,7 @@
             <th>Pts</th>
           </tr>
           <tbody>
-          <tr v-for="(item, index) in loadedLeague.teams.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.index">
+          <tr v-for="(item, index) in loadedLeague.teams.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.teamName">
             <td>{{ index + 1 + '.' }}</td>
             <td>{{ item.teamName }}</td>
             <td>{{ item.goalsScored }}</td>
