@@ -38,55 +38,70 @@
           <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
         </div>
         <div class="matchday-result-inputs">
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).firstGameResult">
-          :
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-        </div>
-        <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).firstGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+          </div>
+          <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
         </div>
       </div>
+
       <div class="matchday-result" v-if="m2selected">
         <h2>Matchday 2</h2>
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-          <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team2).secondGameResult">
-          : 
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+        <div class="matchday-result-inputs">
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+            <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team2).secondGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+          </div>
           <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</button>
         </div>
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).secondGameResult">
-          : 
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).secondGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+        <div class="matchday-result-inputs">
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).secondGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).secondGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+          </div>
           <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
         </div>
       </div>
+
       <div class="matchday-result" v-if="m3selected">
         <h2>Matchday 3</h2>
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult">
-          : 
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
+        <div class="matchday-result-inputs">
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
+          </div>
           <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</button>
         </div>
-        <div class="pair">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-          <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
-          : 
-          <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
-          <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+        <div class="matchday-result-inputs">
+          <div class="pair">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+            <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
+            <p>vs</p>
+            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
+            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+          </div>
           <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
         </div>
       </div>
     </div>
+
+    <div class="chartDiv">
+      <GoalsChart :league="loadedLeague"/>
+    </div>
+
     <div class="table-container">
       <table>
           <tr>
@@ -117,10 +132,10 @@
           </template>
           <template #default>
             <div class="pair">
-              <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName + '&nbsp;'}} </p><p> {{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team1).firstGameResult + '&nbsp;'}}</p>:<p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).firstGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+              <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName}} </p><p> {{loadedLeague.teams.find(item => item.teamName === team1).firstGameResult}}</p>:<p>{{loadedLeague.teams.find(item => item.teamName === team2).firstGameResult}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
             </div>
             <div class="pair">
-              <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team3).firstGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).firstGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+              <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).firstGameResult}}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team4).firstGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
             </div>
           </template>
       </MatchdayContainer>
@@ -129,10 +144,10 @@
           <h2>Matchday 2</h2>
         </template>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).secondGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team3).secondGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+          <p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).secondGameResult}}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team3).secondGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
         </div>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team1).secondGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).secondGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+          <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team1).secondGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team4).secondGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
         </div>
       </MatchdayContainer>
       <MatchdayContainer>
@@ -140,10 +155,10 @@
           <h2>Matchday 3</h2>
         </template>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
+          <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
         </div>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult + '&nbsp;'}}</p> : <p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult + '&nbsp;'}}</p><p>{{'&nbsp;' + loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+          <p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
         </div>
       </MatchdayContainer>
     </div>
@@ -155,6 +170,7 @@
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
   import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
+  import GoalsChart from '@/components/GoalsChart.vue'
   import { ref, watch } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
@@ -163,7 +179,6 @@
   const wrongId = ref<boolean>(false);
   const searchedId = ref<string>(''); 
   let loadedLeague = ref<any>('');
-  let leagueTableToSort = [];
   const resultDiv = ref<boolean>(false);
   const selectedMatchday = ref<string>('');
   const m1selected = ref<boolean>(false);
@@ -179,7 +194,6 @@
     for(let i = 0; i < leaguesList.length; i++) {
       if(leaguesList[i].id === searchedId.value) {
         loadedLeague = leaguesList[i];
-        leagueTableToSort = leaguesList[i].teams;
         team1.value = loadedLeague.teams[0].teamName;
         team2.value = loadedLeague.teams[1].teamName;
         team3.value = loadedLeague.teams[2].teamName;
@@ -351,7 +365,10 @@ tr > td {
   background-color: #0c2634;
 }
 
-.div4 { grid-area: 1 / 4 / 4 / 6; }
+.chartDiv {
+  grid-area: 1 / 4 / 4 / 6; 
+}
+
 .div5 { grid-area: 1 / 2 / 4 / 4; }
 
 .matchday-schedule {
@@ -366,6 +383,7 @@ tr > td {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .matchday-result-selector {
@@ -382,13 +400,14 @@ tr > td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   margin: 3rem 0 3rem 0;
 }
 
 .pair {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
 }
@@ -401,8 +420,13 @@ input[type=number] {
   outline: none;
   height: 2rem;
   width: 2rem;
-  appearance: textfield;
   -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 </style>
