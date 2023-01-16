@@ -98,32 +98,11 @@
       </div>
     </div>
 
-    <div class="chartDiv">
-      <GoalsChart :league="loadedLeague"/>
-    </div>
 
-    <div class="table-container">
-      <table>
-          <tr>
-            <th>L.p.</th>
-            <th>Team</th>
-            <th>G+</th>
-            <th>G-</th>
-            <th>G+/-</th>
-            <th>Pts</th>
-          </tr>
-          <tbody>
-          <tr v-for="(item, index) in loadedLeague.teams.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.teamName">
-            <td>{{ index + 1 + '.' }}</td>
-            <td>{{ item.teamName }}</td>
-            <td>{{ item.goalsScored }}</td>
-            <td>{{ item.goalsConceded }}</td>
-            <td>{{ item.goalsScored - item.goalsConceded }}</td>
-            <td>{{ item.points }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <TheGoalsChart :league="loadedLeague"/>
+
+
+      <TheTable :league="loadedLeague"/>
 
     <div class="matchday-schedule">
         <MatchdayContainer>
@@ -170,8 +149,9 @@
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
   import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
-  import GoalsChart from '@/components/GoalsChart.vue'
-  import { ref, watch } from 'vue';
+  import TheTable from '@/components/TheTable.vue';
+  import TheGoalsChart from '@/components/TheGoalsChart.vue'
+  import { ref } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
   const leagueStore = useLeagueStore();
@@ -334,42 +314,14 @@
   background-color: #181f21;
 }
 
-.side-bar > *{
+.side-bar > * {
   margin: 4rem 0 4rem 0;
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-area: 1 / 6 / 4 / 9;
-
+.div5 { 
+  grid-area: 1 / 2 / 4 / 4; 
+  background-color: #181f21;
 }
-
-table { 
-  width: 100%;
-  height: 100%;
-  font-size: 2rem;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-tr > th {
-  height: 2rem;
-  background-color: #053273;
-}
-
-tr > td {
-  height: 6rem;
-  padding: 0;
-  background-color: #0c2634;
-}
-
-.chartDiv {
-  grid-area: 1 / 4 / 4 / 6; 
-}
-
-.div5 { grid-area: 1 / 2 / 4 / 4; }
 
 .matchday-schedule {
   display: flex;

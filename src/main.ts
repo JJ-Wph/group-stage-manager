@@ -13,15 +13,15 @@ const pinia = createPinia();
 const app = createApp(App);
 
 
-// if(localStorage.getItem("store")) {
-//     pinia.state.value = JSON.parse(localStorage.getItem("store"));
-//   } else {
-//     console.log()
-//   }
+if(localStorage.getItem("store")) {
+    pinia.state.value = JSON.parse(localStorage.getItem("store"));
+  } else {
+    console.log()
+  }
   
-  watch(pinia.state, (state) => {
-      localStorage.setItem("store", JSON.stringify(state))
-  }, { deep: true })
+watch(pinia.state, (state) => {
+    localStorage.setItem("store", JSON.stringify(state))
+}, { deep: true })
 
 const routes = [
     { path: "/", name: "Home", component: Home },

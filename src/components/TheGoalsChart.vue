@@ -1,5 +1,7 @@
 <template>
-    <Doughnut :data="data" :options="options" />
+    <div class="chartDiv">
+        <Doughnut :data="data" :options="options" />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -34,12 +36,19 @@ const data = {
 }
 
 const options = {
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: false,
 }
 
 </script>
 
 
-
 <style scoped>
+.chartDiv {
+    display: flex;
+    grid-area: 1 / 4 / 4 / 6; 
+    background-color: #181f21;
+  }
 </style>
+
+
