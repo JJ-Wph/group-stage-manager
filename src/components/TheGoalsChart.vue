@@ -1,5 +1,6 @@
 <template>
     <div class="chartDiv">
+        <h1>Goals via Team</h1>
         <Doughnut :style="myStyles" :data="data" :options="options" />
     </div>
 </template>
@@ -7,7 +8,7 @@
 <script setup lang="ts">
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
-import { computed } from 'vue'
+import { ref } from 'vue'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,7 +16,7 @@ const props = defineProps({
     league: Object
 })
 
-const data = {
+const data = ref({
     labels: [
         props.league.teams[0].teamName,
         props.league.teams[1].teamName,
@@ -38,25 +39,20 @@ const data = {
             ]
         }
     ]
-}
+})
 
 const options = {
     responsive: true,
-    title: {
-        display: true,
-        text: 'No elo',
-        position: 'top'
-    }
 }
 
 
-const myStyles = computed(() => {
+const myStyles = () => {
     return {
         height: '50%',
         width: '50%',
     }
 
-})
+}
 
 </script>
 
@@ -68,7 +64,7 @@ const myStyles = computed(() => {
     justify-content: center;
     align-items: center;
     height: 100%;
-    grid-area: 1 / 3 / 4 / 6; 
+    grid-area: 1 / 1 / 4 / 3;
     background-color: #181f21;
   }
 </style>

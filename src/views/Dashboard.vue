@@ -10,94 +10,8 @@
   </main>
 
   <main class="main-grid" v-else>
-    <div class="side-bar">
-      <h1>{{loadedLeague.leagueName}}</h1>
 
-      <div class="matchday-result-selector">
-        <PrimaryButton @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
-        <div class="matchday-result-selector-options" v-if="resultDiv">
-          <select v-model="selectedMatchday">
-            <option value="Matchday 1">Matchday 1</option>
-            <option value="Matchday 2">Matchday 2</option>
-            <option value="Matchday 3">Matchday 3</option>
-          </select>
-          <SecondaryButton @click="activateMatchday">Accept</SecondaryButton>
-        </div>
-      </div>
-
-      <div class="matchday-result" v-if="m1selected">
-        <h2>Matchday 1</h2>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).firstGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).firstGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
-        </div>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).firstGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
-        </div>
-      </div>
-
-      <div class="matchday-result" v-if="m2selected">
-        <h2>Matchday 2</h2>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-            <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team2).secondGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</SecondaryButton>
-        </div>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).secondGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).secondGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
-        </div>
-      </div>
-
-      <div class="matchday-result" v-if="m3selected">
-        <h2>Matchday 3</h2>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</SecondaryButton>
-        </div>
-        <div class="matchday-result-inputs">
-          <div class="pair">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
-            <input type="number" min="0" v-model="loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult">
-            <p>vs</p>
-            <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
-            <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
-          </div>
-          <SecondaryButton @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
-        </div>
-      </div>
-    </div>
-    
+    <TheMainInputs :league="loadedLeague" :team1="team1" :team2="team2" :team3="team3" :team4="team4"/>
     <TheGoalsChart :league="loadedLeague"/>
     <TheTable :league="loadedLeague"/>
 
@@ -108,7 +22,7 @@
           </template>
           <template #default>
             <div class="pair">
-              <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName}} </p><p> {{loadedLeague.teams.find(item => item.teamName === team1).firstGameResult}}</p>:<p>{{loadedLeague.teams.find(item => item.teamName === team2).firstGameResult}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+              <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p><p> {{loadedLeague.teams.find(item => item.teamName === team1).firstGameResult}}</p>:<p>{{loadedLeague.teams.find(item => item.teamName === team2).firstGameResult}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
             </div>
             <div class="pair">
               <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).firstGameResult}}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team4).firstGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
@@ -146,9 +60,9 @@
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
   import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
-  import SecondaryButton from '@/components/SecondaryButton.vue';
   import TheTable from '@/components/TheTable.vue';
-  import TheGoalsChart from '@/components/TheGoalsChart.vue'
+  import TheGoalsChart from '@/components/TheGoalsChart.vue';
+  import TheMainInputs from '@/components/TheMainInputs.vue';
   import { ref } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
@@ -157,11 +71,8 @@
   const wrongId = ref<boolean>(false);
   const searchedId = ref<string>(''); 
   let loadedLeague = ref<any>('');
-  const resultDiv = ref<boolean>(false);
-  const selectedMatchday = ref<string>('');
-  const m1selected = ref<boolean>(false);
-  const m2selected = ref<boolean>(false);
-  const m3selected = ref<boolean>(false);
+
+
   const team1 = ref<string>('');
   const team2 = ref<string>('');
   const team3 = ref<string>('');
@@ -182,115 +93,8 @@
       }
     }
   };
-
-  function activateMatchday() {
-    if(selectedMatchday.value === 'Matchday 1') {
-      m1selected.value = true;
-      m2selected.value = false;
-      m3selected.value = false;
-    } else if(selectedMatchday.value === 'Matchday 2') {
-      m1selected.value = false;
-      m2selected.value = true;
-      m3selected.value = false;
-    } else if(selectedMatchday.value === 'Matchday 3') {
-      m1selected.value = false;
-      m2selected.value = false;
-      m3selected.value = true;
-    }
-    resultDiv.value = false;
-  };
-
-  function addFirstResult(homeTeam, awayTeam) {
-    if(homeTeam.firstGameResult > awayTeam.firstGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
-    } else if(homeTeam.firstGameResult < awayTeam.firstGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
-    } else if(homeTeam.firstGameResult === awayTeam.firstGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
-    }
-  }
-
-  function addSecondResult(homeTeam, awayTeam) {
-    if(homeTeam.secondGameResult > awayTeam.secondGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    } else if(homeTeam.secondGameResult < awayTeam.secondGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    } else if(homeTeam.secondGameResult === awayTeam.secondGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    }
-    console.log(localStorage);
-  }
-  
-  function addThirdResult(homeTeam, awayTeam) {
-    if(homeTeam.thirdGameResult > awayTeam.thirdGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    } else if(homeTeam.thirdGameResult < awayTeam.thirdGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    } else if(homeTeam.thirdGameResult === awayTeam.thirdGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-    }
-  }
 </script>
+
 <style>
 .main-grid {
     display: grid;
@@ -303,55 +107,12 @@
     grid-row-gap: 0.4rem; 
 }
 
-.side-bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  grid-area: 1 / 1 / 4 / 3;
-  background-color: #181f21;
-}
-
-.side-bar > * {
-  margin: 4rem 0 4rem 0;
-}
-
 .matchday-schedule {
   display: flex;
   grid-area: 4 / 1 / 6 / 9;
   align-items: center;
   justify-content: space-evenly;
   background-color: #181f21;
-}
-
-.matchday-result {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.matchday-result-selector {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 10%;
-}
-
-.matchday-result-selector-options {
-  display: flex;
-  flex-direction: column;
-}
-
-.matchday-result-inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 3rem 0 3rem 0;
 }
 
 .pair {
@@ -373,10 +134,22 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+select {
+  text-align: center;
+  background-color: #053273;
+  color: #f4f1f1;
+  border: 0.1rem solid #053273;
+  height: 3rem;
+  width: 10rem;
+}
+
+option {
+  border: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 </style>
