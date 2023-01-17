@@ -1,19 +1,19 @@
 <template>
     <div class="chartDiv">
-        <Doughnut :data="data" :options="options" />
+        <Doughnut :style="myStyles" :data="data" :options="options" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
+import { computed } from 'vue'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const props = defineProps({
     league: Object
 })
-
 
 const data = {
     labels: [
@@ -24,7 +24,12 @@ const data = {
     ],
     datasets: [
         {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            backgroundColor: [
+                '#41B883', 
+                '#E46651', 
+                '#00D8FF', 
+                '#DD1B16'
+            ],
             data: [
                 props.league.teams[0].goalsScored,
                 props.league.teams[1].goalsScored,
@@ -37,8 +42,21 @@ const data = {
 
 const options = {
     responsive: true,
-    maintainAspectRatio: false,
+    title: {
+        display: true,
+        text: 'No elo',
+        position: 'top'
+    }
 }
+
+
+const myStyles = computed(() => {
+    return {
+        height: '50%',
+        width: '50%',
+    }
+
+})
 
 </script>
 
@@ -46,7 +64,11 @@ const options = {
 <style scoped>
 .chartDiv {
     display: flex;
-    grid-area: 1 / 4 / 4 / 6; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    grid-area: 1 / 3 / 4 / 6; 
     background-color: #181f21;
   }
 </style>

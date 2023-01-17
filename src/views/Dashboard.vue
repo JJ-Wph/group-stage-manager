@@ -14,14 +14,14 @@
       <h1>{{loadedLeague.leagueName}}</h1>
 
       <div class="matchday-result-selector">
-        <button @click="resultDiv = !resultDiv">Add Results</button>
-        <div v-if="resultDiv">
+        <PrimaryButton @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
+        <div class="matchday-result-selector-options" v-if="resultDiv">
           <select v-model="selectedMatchday">
             <option value="Matchday 1">Matchday 1</option>
             <option value="Matchday 2">Matchday 2</option>
             <option value="Matchday 3">Matchday 3</option>
           </select>
-          <button @click="activateMatchday">Accept</button>
+          <SecondaryButton @click="activateMatchday">Accept</SecondaryButton>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).firstGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
           </div>
-          <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
+          <SecondaryButton @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
         </div>
         <div class="matchday-result-inputs">
           <div class="pair">
@@ -45,7 +45,7 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).firstGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
           </div>
-          <button @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+          <SecondaryButton @click="addFirstResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team3).secondGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
           </div>
-          <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</button>
+          <SecondaryButton @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team2), loadedLeague.teams.find(item => item.teamName === team3))">Add Result</SecondaryButton>
         </div>
         <div class="matchday-result-inputs">
           <div class="pair">
@@ -69,7 +69,7 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team4).secondGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
           </div>
-          <button @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</button>
+          <SecondaryButton @click="addSecondResult(loadedLeague.teams.find(item => item.teamName === team1), loadedLeague.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
           </div>
-          <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</button>
+          <SecondaryButton @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team3), loadedLeague.teams.find(item => item.teamName === team1))">Add Result</SecondaryButton>
         </div>
         <div class="matchday-result-inputs">
           <div class="pair">
@@ -93,16 +93,13 @@
             <input type="number" v-model="loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult">
             <p>{{ loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
           </div>
-          <button @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</button>
+          <SecondaryButton @click="addThirdResult(loadedLeague.teams.find(item => item.teamName === team4), loadedLeague.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
         </div>
       </div>
     </div>
-
-
-      <TheGoalsChart :league="loadedLeague"/>
-
-
-      <TheTable :league="loadedLeague"/>
+    
+    <TheGoalsChart :league="loadedLeague"/>
+    <TheTable :league="loadedLeague"/>
 
     <div class="matchday-schedule">
         <MatchdayContainer>
@@ -149,6 +146,7 @@
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
   import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
+  import SecondaryButton from '@/components/SecondaryButton.vue';
   import TheTable from '@/components/TheTable.vue';
   import TheGoalsChart from '@/components/TheGoalsChart.vue'
   import { ref } from 'vue';
@@ -310,7 +308,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  grid-area: 1 / 1 / 6 / 2;
+  grid-area: 1 / 1 / 4 / 3;
   background-color: #181f21;
 }
 
@@ -318,14 +316,9 @@
   margin: 4rem 0 4rem 0;
 }
 
-.div5 { 
-  grid-area: 1 / 2 / 4 / 4; 
-  background-color: #181f21;
-}
-
 .matchday-schedule {
   display: flex;
-  grid-area: 4 / 2 / 6 / 9;
+  grid-area: 4 / 1 / 6 / 9;
   align-items: center;
   justify-content: space-evenly;
   background-color: #181f21;
@@ -345,6 +338,11 @@
   align-items: center;
   width: 100%;
   height: 10%;
+}
+
+.matchday-result-selector-options {
+  display: flex;
+  flex-direction: column;
 }
 
 .matchday-result-inputs {

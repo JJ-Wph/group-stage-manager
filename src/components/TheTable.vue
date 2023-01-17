@@ -34,14 +34,14 @@ const props = defineProps({
 
 
 <style scoped>
-.table-container {
+  .table-container {
     display: flex;
     justify-content: center;
     align-items: center;
     grid-area: 1 / 6 / 4 / 9;
   }
 
-table { 
+  table { 
     width: 100%;
     height: 100%;
     font-size: 2rem;
