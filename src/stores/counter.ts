@@ -4,39 +4,63 @@ export class League {
     teams: Array<any> = [
       {
         teamName: "",
-        points: 0,
-        goalsScored: 0,
-        goalsConceded: 0,
+        pointsTotal: 0,
+        goalsScoredTotal: 0,
+        goalsConcededTotal: 0,
+        firstGamePoints: 0,
+        secondGamePoints: 0,
+        thirdGamePoints: 0,
         firstGameResult: "",
         secondGameResult: "",
-        thirdGameResult: ""
+        thirdGameResult: "",
+        firstGameConceded: "",
+        secondGameConceded: "",
+        thirdGameConceded: ""
       },
       {
         teamName: "",
-        points: 0,
-        goalsScored: 0,
-        goalsConceded: 0,
+        pointsTotal: 0,
+        goalsScoredTotal: 0,
+        goalsConcededTotal: 0,
+        firstGamePoints: 0,
+        secondGamePoints: 0,
+        thirdGamePoints: 0,
         firstGameResult: "",
         secondGameResult: "",
-        thirdGameResult: ""
+        thirdGameResult: "",
+        firstGameConceded: "",
+        secondGameConceded: "",
+        thirdGameConceded: ""
       },
       {
         teamName: "",
-        points: 0,
-        goalsScored: 0,
-        goalsConceded: 0,
+        pointsTotal: 0,
+        goalsScoredTotal: 0,
+        goalsConcededTotal: 0,
+        firstGamePoints: 0,
+        secondGamePoints: 0,
+        thirdGamePoints: 0,
         firstGameResult: "",
         secondGameResult: "",
-        thirdGameResult: ""
+        thirdGameResult: "",
+        firstGameConceded: "",
+        secondGameConceded: "",
+        thirdGameConceded: ""
       },
       {
         teamName: "",
-        points: 0,
-        goalsScored: 0,
-        goalsConceded: 0,
+        pointsTotal: 0,
+        goalsScoredTotal: 0,
+        goalsConcededTotal: 0,
+        firstGamePoints: 0,
+        secondGamePoints: 0,
+        thirdGamePoints: 0,
         firstGameResult: "",
         secondGameResult: "",
-        thirdGameResult: ""
+        thirdGameResult: "",
+        firstGameConceded: "",
+        secondGameConceded: "",
+        thirdGameConceded: ""
       }
     ];
     

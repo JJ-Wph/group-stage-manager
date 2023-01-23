@@ -10,13 +10,13 @@
               <th>Pts</th>
             </tr>
             <tbody>
-            <tr v-for="(item, index) in props.league.teams.sort((a, b) => (a.points < b.points) ? 1 : -1)" :key="item.teamName">
+            <tr v-for="(item, index) in props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1)" :key="item.teamName">
               <td>{{ index + 1 + '.' }}</td>
               <td>{{ item.teamName }}</td>
-              <td>{{ item.goalsScored }}</td>
-              <td>{{ item.goalsConceded }}</td>
-              <td>{{ item.goalsScored - item.goalsConceded }}</td>
-              <td>{{ item.points }}</td>
+              <td>{{ item.goalsScoredTotal }}</td>
+              <td>{{ item.goalsConcededTotal }}</td>
+              <td>{{ item.goalsScoredTotal - item.goalsConcededTotal }}</td>
+              <td>{{ item.pointsTotal }}</td>
             </tr>
           </tbody>
         </table>
@@ -28,6 +28,10 @@
 const props = defineProps({
     league: Object
 })
+
+function PointsTotal(v) {
+  return 
+}
 
 </script>
 

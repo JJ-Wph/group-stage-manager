@@ -18,23 +18,23 @@
       <h2>Matchday 1</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName}}</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).firstGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team1).teamName}}</p>
+          <input type="number" v-model="specifiedTeam(team1).firstGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team2).firstGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team2).firstGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
         </div>
-        <SecondaryButton @click="addFirstResult(props.league.teams.find(item => item.teamName === team1), props.league.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addFirstResult(specifiedTeam(team1), specifiedTeam(team2))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).firstGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team3).firstGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team4).firstGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team4).firstGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
         </div>
-        <SecondaryButton @click="addFirstResult(props.league.teams.find(item => item.teamName === team3), props.league.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addFirstResult(specifiedTeam(team3), specifiedTeam(team4))">Add Result</SecondaryButton>
       </div>
     </div>
 
@@ -42,23 +42,23 @@
       <h2>Matchday 2</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
-          <input type="number" min="0" v-model="props.league.teams.find(item => item.teamName === team2).secondGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
+          <input type="number" min="0" v-model="specifiedTeam(team2).secondGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).secondGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team3).secondGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
         </div>
-        <SecondaryButton @click="addSecondResult(props.league.teams.find(item => item.teamName === team2), props.league.teams.find(item => item.teamName === team3))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addSecondResult(specifiedTeam(team2), specifiedTeam(team3))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).secondGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team1).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team1).secondGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team4).secondGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team4).secondGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
         </div>
-        <SecondaryButton @click="addSecondResult(props.league.teams.find(item => item.teamName === team1), props.league.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addSecondResult(specifiedTeam(team1), specifiedTeam(team4))">Add Result</SecondaryButton>
       </div>
     </div>
 
@@ -66,23 +66,23 @@
       <h2>Matchday 3</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).thirdGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team3).thirdGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).thirdGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team1).thirdGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team1).teamName }}</p>
         </div>
-        <SecondaryButton @click="addThirdResult(props.league.teams.find(item => item.teamName === team3), props.league.teams.find(item => item.teamName === team1))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addThirdResult(specifiedTeam(team3), specifiedTeam(team1))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
-          <input type="number" min="0" v-model="props.league.teams.find(item => item.teamName === team4).thirdGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
+          <input type="number" min="0" v-model="specifiedTeam(team4).thirdGameResult">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="props.league.teams.find(item => item.teamName === team2).thirdGameResult">
-          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
+          <input type="number" v-model="specifiedTeam(team2).thirdGameResult">
+          <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
         </div>
-        <SecondaryButton @click="addThirdResult(props.league.teams.find(item => item.teamName === team4), props.league.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
+        <SecondaryButton @click="addThirdResult(specifiedTeam(team4), specifiedTeam(team2))">Add Result</SecondaryButton>
       </div>
     </div>
   </div>
@@ -107,6 +107,10 @@
   const resultDiv = ref<boolean>(false);
   const selectedMatchday = ref<string>('');
 
+  function specifiedTeam(v) {
+    return props.league.teams.find(item => item.teamName === v)
+  }
+
   function activateMatchday() {
     if(selectedMatchday.value === 'Matchday 1') {
       m1selected.value = true;
@@ -126,92 +130,58 @@
 
   function addFirstResult(homeTeam, awayTeam) {
     if(homeTeam.firstGameResult > awayTeam.firstGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
+      homeTeam.firstGamePoints = 3;
+      awayTeam.firstGamePoints = 0;
+      homeTeam.firstGameConceded = awayTeam.firstGameResult;
+      awayTeam.firstGameConceded = homeTeam.firstGameResult;
     } else if(homeTeam.firstGameResult < awayTeam.firstGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
+      awayTeam.firstGamePoints = 3;
+      homeTeam.firstGamePoints = 0;
+      homeTeam.firstGameConceded = awayTeam.firstGameResult;
+      awayTeam.firstGameConceded = homeTeam.firstGameResult;
     } else if(homeTeam.firstGameResult === awayTeam.firstGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.firstGameResult;
-      homeTeam.goalsConceded += awayTeam.firstGameResult;
-      awayTeam.goalsScored += awayTeam.firstGameResult;
-      awayTeam.goalsConceded += homeTeam.firstGameResult;
-      console.log(homeTeam.firstGameResult, awayTeam.firstGameResult);
-      console.log(homeTeam.points, awayTeam.points)
-      console.log(localStorage)
+      homeTeam.firstGamePoints = 1;
+      awayTeam.firstGamePoints = 1;
+      homeTeam.firstGameConceded = awayTeam.firstGameResult;
+      awayTeam.firstGameConceded = homeTeam.firstGameResult;
     }
   }
 
   function addSecondResult(homeTeam, awayTeam) {
     if(homeTeam.secondGameResult > awayTeam.secondGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      homeTeam.secondGamePoints = 3;
+      awayTeam.secondGamePoints = 0;
+      homeTeam.secondGameConceded = awayTeam.secondGameResult;
+      awayTeam.secondGameConceded = homeTeam.secondGameResult;
     } else if(homeTeam.secondGameResult < awayTeam.secondGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      awayTeam.secondGamePoints = 3;
+      homeTeam.secondGamePoints = 0;
+      homeTeam.secondGameConceded = awayTeam.secondGameResult;
+      awayTeam.secondGameConceded = homeTeam.secondGameResult;
     } else if(homeTeam.secondGameResult === awayTeam.secondGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.secondGameResult;
-      homeTeam.goalsConceded += awayTeam.secondGameResult;
-      awayTeam.goalsScored += awayTeam.secondGameResult;
-      awayTeam.goalsConceded += homeTeam.secondGameResult;
-      console.log(homeTeam.secondGameResult, awayTeam.secondGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      homeTeam.secondGamePoints = 1;
+      awayTeam.secondGamePoints = 1;
+      homeTeam.secondGameConceded = awayTeam.secondGameResult;
+      awayTeam.secondGameConceded = homeTeam.secondGameResult;
     }
-    console.log(localStorage);
   }
   
   function addThirdResult(homeTeam, awayTeam) {
     if(homeTeam.thirdGameResult > awayTeam.thirdGameResult) {
-      homeTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      homeTeam.thirdGamePoints = 3;
+      awayTeam.thirdGamePoints = 0;
+      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
+      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
     } else if(homeTeam.thirdGameResult < awayTeam.thirdGameResult) {
-      awayTeam.points += 3;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      awayTeam.thirdGamePoints = 3;
+      homeTeam.thirdGamePoints = 0;
+      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
+      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
     } else if(homeTeam.thirdGameResult === awayTeam.thirdGameResult) {
-      homeTeam.points += 1;
-      awayTeam.points += 1;
-      homeTeam.goalsScored += homeTeam.thirdGameResult;
-      homeTeam.goalsConceded += awayTeam.thirdGameResult;
-      awayTeam.goalsScored += awayTeam.thirdGameResult;
-      awayTeam.goalsConceded += homeTeam.thirdGameResult;
-      console.log(homeTeam.thirdGameResult, awayTeam.thirdGameResult);
-      console.log(homeTeam.points, awayTeam.points)
+      homeTeam.thirdGamePoints = 1;
+      awayTeam.thirdGamePoints = 1;
+      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
+      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
     }
   }
 </script>
