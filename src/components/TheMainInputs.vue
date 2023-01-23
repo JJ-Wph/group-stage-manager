@@ -3,7 +3,7 @@
     <h1>{{props.league.leagueName}}</h1>
     
     <div class="matchday-result-selector">
-      <PrimaryButton @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
+      <PrimaryButton v-if="!resultDiv" @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
       <div class="matchday-result-selector-options" v-if="resultDiv">
         <select v-model="selectedMatchday">
           <option value="Matchday 1">Matchday 1</option>
@@ -18,21 +18,21 @@
       <h2>Matchday 1</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team1).teamName}}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName}}</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).firstGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team2).firstGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
         </div>
         <SecondaryButton @click="addFirstResult(props.league.teams.find(item => item.teamName === team1), props.league.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).firstGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team4).firstGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
         </div>
         <SecondaryButton @click="addFirstResult(props.league.teams.find(item => item.teamName === team3), props.league.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
       </div>
@@ -42,21 +42,21 @@
       <h2>Matchday 2</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
           <input type="number" min="0" v-model="props.league.teams.find(item => item.teamName === team2).secondGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).secondGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
         </div>
         <SecondaryButton @click="addSecondResult(props.league.teams.find(item => item.teamName === team2), props.league.teams.find(item => item.teamName === team3))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).secondGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team4).secondGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
         </div>
         <SecondaryButton @click="addSecondResult(props.league.teams.find(item => item.teamName === team1), props.league.teams.find(item => item.teamName === team4))">Add Result</SecondaryButton>
       </div>
@@ -66,21 +66,21 @@
       <h2>Matchday 3</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team3).teamName }}</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team3).thirdGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team1).thirdGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team1).teamName }}</p>
         </div>
         <SecondaryButton @click="addThirdResult(props.league.teams.find(item => item.teamName === team3), props.league.teams.find(item => item.teamName === team1))">Add Result</SecondaryButton>
       </div>
       <div class="matchday-result-inputs">
         <div class="pair">
-          <p>{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team4).teamName }}</p>
           <input type="number" min="0" v-model="props.league.teams.find(item => item.teamName === team4).thirdGameResult">
-          <p>vs</p>
+          <p class="vs-paragraph">vs</p>
           <input type="number" v-model="props.league.teams.find(item => item.teamName === team2).thirdGameResult">
-          <p>{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
+          <p class="team-paragraph">{{ props.league.teams.find(item => item.teamName === team2).teamName }}</p>
         </div>
         <SecondaryButton @click="addThirdResult(props.league.teams.find(item => item.teamName === team4), props.league.teams.find(item => item.teamName === team2))">Add Result</SecondaryButton>
       </div>
@@ -219,17 +219,18 @@
 
 
 <style scoped>
+
 .side-bar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   grid-area: 1 / 3 / 4 / 6; 
   background-color: #181f21;
 }
 
 .side-bar > * {
-  margin: 4rem 0 4rem 0;
+  margin: 1rem 0 1rem 0;
 }
 
 .matchday-result {
@@ -245,7 +246,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 10%;
+  height: 20%;
 }
 
 .matchday-result-selector-options {
@@ -260,5 +261,41 @@
   align-items: center;
   width: 100%;
   margin: 3rem 0 3rem 0;
+}
+
+.pair {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.vs-paragraph {
+  display: flex;
+  align-items: flex-end;
+  margin: 0rem 1.5rem 0rem 1.5rem;
+}
+
+.team-paragraph {
+  display: flex;
+  justify-content: center;
+  min-width: 10rem;
+  max-width: 20rem;
+}
+
+select {
+  text-align: center;
+  background-color: #053273;
+  color: #f4f1f1;
+  border: 0.1rem solid #053273;
+  height: 3rem;
+  width: 10rem;
+  margin: 0.5rem;
+}
+
+option {
+  border: none;
 }
 </style>

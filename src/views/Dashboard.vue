@@ -131,20 +131,8 @@ input[type=number] {
   outline: none;
   height: 2rem;
   width: 2rem;
+  margin: 0rem 1.5rem 0rem 1.5rem;
   -moz-appearance: textfield;
-}
-
-select {
-  text-align: center;
-  background-color: #053273;
-  color: #f4f1f1;
-  border: 0.1rem solid #053273;
-  height: 3rem;
-  width: 10rem;
-}
-
-option {
-  border: none;
 }
 
 input::-webkit-outer-spin-button,
