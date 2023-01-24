@@ -19,9 +19,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team1).teamName}}</p>
-          <input type="number" v-model="specifiedTeam(team1).firstGameResult">
+          <input type="number" v-model="specifiedTeam(team1).firstGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team2).firstGameResult">
+          <input type="number" v-model="specifiedTeam(team2).firstGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
         </div>
         <SecondaryButton @click="addFirstResult(specifiedTeam(team1), specifiedTeam(team2))">Add Result</SecondaryButton>
@@ -29,9 +29,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
-          <input type="number" v-model="specifiedTeam(team3).firstGameResult">
+          <input type="number" v-model="specifiedTeam(team3).firstGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team4).firstGameResult">
+          <input type="number" v-model="specifiedTeam(team4).firstGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
         </div>
         <SecondaryButton @click="addFirstResult(specifiedTeam(team3), specifiedTeam(team4))">Add Result</SecondaryButton>
@@ -43,9 +43,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
-          <input type="number" min="0" v-model="specifiedTeam(team2).secondGameResult">
+          <input type="number" min="0" v-model="specifiedTeam(team2).secondGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team3).secondGameResult">
+          <input type="number" v-model="specifiedTeam(team3).secondGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
         </div>
         <SecondaryButton @click="addSecondResult(specifiedTeam(team2), specifiedTeam(team3))">Add Result</SecondaryButton>
@@ -53,9 +53,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team1).teamName }}</p>
-          <input type="number" v-model="specifiedTeam(team1).secondGameResult">
+          <input type="number" v-model="specifiedTeam(team1).secondGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team4).secondGameResult">
+          <input type="number" v-model="specifiedTeam(team4).secondGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
         </div>
         <SecondaryButton @click="addSecondResult(specifiedTeam(team1), specifiedTeam(team4))">Add Result</SecondaryButton>
@@ -67,9 +67,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
-          <input type="number" v-model="specifiedTeam(team3).thirdGameResult">
+          <input type="number" v-model="specifiedTeam(team3).thirdGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team1).thirdGameResult">
+          <input type="number" v-model="specifiedTeam(team1).thirdGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team1).teamName }}</p>
         </div>
         <SecondaryButton @click="addThirdResult(specifiedTeam(team3), specifiedTeam(team1))">Add Result</SecondaryButton>
@@ -77,9 +77,9 @@
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team4).teamName }}</p>
-          <input type="number" min="0" v-model="specifiedTeam(team4).thirdGameResult">
+          <input type="number" min="0" v-model="specifiedTeam(team4).thirdGameScoredGoals">
           <p class="vs-paragraph">vs</p>
-          <input type="number" v-model="specifiedTeam(team2).thirdGameResult">
+          <input type="number" v-model="specifiedTeam(team2).thirdGameScoredGoals">
           <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
         </div>
         <SecondaryButton @click="addThirdResult(specifiedTeam(team4), specifiedTeam(team2))">Add Result</SecondaryButton>
@@ -111,6 +111,7 @@
     return props.league.teams.find(item => item.teamName === v)
   }
 
+
   function activateMatchday() {
     if(selectedMatchday.value === 'Matchday 1') {
       m1selected.value = true;
@@ -129,60 +130,75 @@
   };
 
   function addFirstResult(homeTeam, awayTeam) {
-    if(homeTeam.firstGameResult > awayTeam.firstGameResult) {
+    if(homeTeam.firstGameScoredGoals > awayTeam.firstGameScoredGoals) {
       homeTeam.firstGamePoints = 3;
       awayTeam.firstGamePoints = 0;
-      homeTeam.firstGameConceded = awayTeam.firstGameResult;
-      awayTeam.firstGameConceded = homeTeam.firstGameResult;
-    } else if(homeTeam.firstGameResult < awayTeam.firstGameResult) {
+      homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
+      awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
+    } else if(homeTeam.firstGameScoredGoals < awayTeam.firstGameScoredGoals) {
       awayTeam.firstGamePoints = 3;
       homeTeam.firstGamePoints = 0;
-      homeTeam.firstGameConceded = awayTeam.firstGameResult;
-      awayTeam.firstGameConceded = homeTeam.firstGameResult;
-    } else if(homeTeam.firstGameResult === awayTeam.firstGameResult) {
+      homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
+      awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
+    } else if(homeTeam.firstGameScoredGoals === "" && awayTeam.firstGameScoredGoals === "") {
+      homeTeam.firstGamePoints = null;
+      awayTeam.firstGamePoints = null;
+      homeTeam.firstGameConcededGoals = null;
+      awayTeam.firstGameConcededGoals = null;
+    } else if(homeTeam.firstGameScoredGoals === awayTeam.firstGameScoredGoals) {
       homeTeam.firstGamePoints = 1;
       awayTeam.firstGamePoints = 1;
-      homeTeam.firstGameConceded = awayTeam.firstGameResult;
-      awayTeam.firstGameConceded = homeTeam.firstGameResult;
+      homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
+      awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
     }
   }
 
   function addSecondResult(homeTeam, awayTeam) {
-    if(homeTeam.secondGameResult > awayTeam.secondGameResult) {
+    if(homeTeam.secondGameScoredGoals > awayTeam.secondGameScoredGoals) {
       homeTeam.secondGamePoints = 3;
       awayTeam.secondGamePoints = 0;
-      homeTeam.secondGameConceded = awayTeam.secondGameResult;
-      awayTeam.secondGameConceded = homeTeam.secondGameResult;
-    } else if(homeTeam.secondGameResult < awayTeam.secondGameResult) {
+      homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
+      awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
+    } else if(homeTeam.secondGameScoredGoals < awayTeam.secondGameScoredGoals) {
       awayTeam.secondGamePoints = 3;
       homeTeam.secondGamePoints = 0;
-      homeTeam.secondGameConceded = awayTeam.secondGameResult;
-      awayTeam.secondGameConceded = homeTeam.secondGameResult;
-    } else if(homeTeam.secondGameResult === awayTeam.secondGameResult) {
+      homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
+      awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
+    } else if(homeTeam.secondGameScoredGoals === "" && awayTeam.secondGameScoredGoals === "") {
+      homeTeam.secondGamePoints = null;
+      awayTeam.secondGamePoints = null;
+      homeTeam.secondGameConcededGoals = null;
+      awayTeam.secondGameConcededGoals = null;
+    } else if(homeTeam.secondGameScoredGoals === awayTeam.secondGameScoredGoals) {
       homeTeam.secondGamePoints = 1;
       awayTeam.secondGamePoints = 1;
-      homeTeam.secondGameConceded = awayTeam.secondGameResult;
-      awayTeam.secondGameConceded = homeTeam.secondGameResult;
+      homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
+      awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
     }
   }
   
   function addThirdResult(homeTeam, awayTeam) {
-    if(homeTeam.thirdGameResult > awayTeam.thirdGameResult) {
+    if(homeTeam.thirdGameScoredGoals > awayTeam.thirdGameScoredGoals) {
       homeTeam.thirdGamePoints = 3;
       awayTeam.thirdGamePoints = 0;
-      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
-      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
-    } else if(homeTeam.thirdGameResult < awayTeam.thirdGameResult) {
+      homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
+      awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
+    } else if(homeTeam.thirdGameScoredGoals < awayTeam.thirdGameScoredGoals) {
       awayTeam.thirdGamePoints = 3;
       homeTeam.thirdGamePoints = 0;
-      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
-      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
-    } else if(homeTeam.thirdGameResult === awayTeam.thirdGameResult) {
+      homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
+      awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
+    } else if(homeTeam.thirdGameScoredGoals === "" && awayTeam.thirdGameScoredGoals === "") {
+      homeTeam.thirdGamePoints = null;
+      awayTeam.thirdGamePoints = null;
+      homeTeam.thirdGameConcededGoals = null;
+      awayTeam.thirdGameConcededGoals = null;
+    } else if(homeTeam.thirdGameScoredGoals === awayTeam.thirdGameScoredGoals) {
       homeTeam.thirdGamePoints = 1;
       awayTeam.thirdGamePoints = 1;
-      homeTeam.thirdGameConceded = awayTeam.thirdGameResult;
-      awayTeam.thirdGameConceded = homeTeam.thirdGameResult;
-    }
+      homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
+      awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
+    } 
   }
 </script>
 
@@ -245,7 +261,6 @@
 .vs-paragraph {
   display: flex;
   align-items: flex-end;
-  margin: 0rem 1.5rem 0rem 1.5rem;
 }
 
 .team-paragraph {

@@ -32,10 +32,10 @@ const data = ref({
                 '#DD1B16'
             ],
             data: [
-                props.league.teams[0].goalsScored,
-                props.league.teams[1].goalsScored,
-                props.league.teams[2].goalsScored,
-                props.league.teams[3].goalsScored,
+                props.league.teams[0].scoredGoalsTotal,
+                props.league.teams[1].scoredGoalsTotal,
+                props.league.teams[2].scoredGoalsTotal,
+                props.league.teams[3].scoredGoalsTotal,
             ]
         }
     ]

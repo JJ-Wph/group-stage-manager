@@ -22,10 +22,10 @@
           </template>
           <template #default>
             <div class="pair">
-              <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName}}</p><p> {{loadedLeague.teams.find(item => item.teamName === team1).firstGameResult}}</p>:<p>{{loadedLeague.teams.find(item => item.teamName === team2).firstGameResult}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+              <p class="team-paragraph">{{specifiedTeam(team1).teamName}}</p><p>{{specifiedTeam(team1).firstGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team2).firstGameScoredGoals}}</p><p class="team-paragraph">{{specifiedTeam(team2).teamName }}</p>
             </div>
             <div class="pair">
-              <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).firstGameResult}}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team4).firstGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+              <p class="team-paragraph">{{specifiedTeam(team3).teamName}}</p><p>{{specifiedTeam(team3).firstGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team4).firstGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p>
             </div>
           </template>
       </MatchdayContainer>
@@ -34,10 +34,10 @@
           <h2>Matchday 2</h2>
         </template>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName}}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).secondGameResult}}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team3).secondGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p>
+          <p class="team-paragraph">{{specifiedTeam(team2).teamName}}</p><p>{{specifiedTeam(team2).secondGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team3).secondGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team3).teamName }}</p>
         </div>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team1).secondGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team4).secondGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p>
+          <p class="team-paragraph">{{specifiedTeam(team1).teamName }}</p><p>{{specifiedTeam(team1).secondGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team4).secondGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p>
         </div>
       </MatchdayContainer>
       <MatchdayContainer>
@@ -45,10 +45,10 @@
           <h2>Matchday 3</h2>
         </template>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team3).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team3).thirdGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team1).thirdGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team1).teamName }}</p>
+          <p class="team-paragraph">{{specifiedTeam(team3).teamName }}</p><p>{{specifiedTeam(team3).thirdGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team1).thirdGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team1).teamName }}</p>
         </div>
         <div class="pair">
-          <p>{{loadedLeague.teams.find(item => item.teamName === team4).teamName }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team4).thirdGameResult }}</p> : <p>{{loadedLeague.teams.find(item => item.teamName === team2).thirdGameResult }}</p><p>{{loadedLeague.teams.find(item => item.teamName === team2).teamName }}</p>
+          <p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p><p>{{specifiedTeam(team4).thirdGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team2).thirdGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team2).teamName }}</p>
         </div>
       </MatchdayContainer>
     </div>
@@ -93,6 +93,11 @@
       }
     }
   };
+
+  function specifiedTeam(v) {
+    return loadedLeague.teams.find(item => item.teamName === v)
+}
+
 </script>
 
 <style>
@@ -121,6 +126,18 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
+}
+
+.vs-paragraph {
+  display: flex;
+  align-items: flex-end;
+}
+
+.team-paragraph {
+  display: flex;
+  justify-content: center;
+  min-width: 10rem;
+  max-width: 20rem;
 }
 
 input[type=number] {

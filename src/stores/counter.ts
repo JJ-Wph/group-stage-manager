@@ -5,62 +5,62 @@ export class League {
       {
         teamName: "",
         pointsTotal: 0,
-        goalsScoredTotal: 0,
-        goalsConcededTotal: 0,
+        scoredGoalsTotal: 0,
+        concededGoalsTotal: 0,
         firstGamePoints: 0,
         secondGamePoints: 0,
         thirdGamePoints: 0,
-        firstGameResult: "",
-        secondGameResult: "",
-        thirdGameResult: "",
-        firstGameConceded: "",
-        secondGameConceded: "",
-        thirdGameConceded: ""
+        firstGameScoredGoals: null,
+        secondGameScoredGoals: null,
+        thirdGameScoredGoals: null,
+        firstGameConcededGoals: null,
+        secondGameConcededGoals: null,
+        thirdGameConcededGoals: null
       },
       {
         teamName: "",
         pointsTotal: 0,
-        goalsScoredTotal: 0,
-        goalsConcededTotal: 0,
+        scoredGoalsTotal: 0,
+        concededGoalsTotal: 0,
         firstGamePoints: 0,
         secondGamePoints: 0,
         thirdGamePoints: 0,
-        firstGameResult: "",
-        secondGameResult: "",
-        thirdGameResult: "",
-        firstGameConceded: "",
-        secondGameConceded: "",
-        thirdGameConceded: ""
+        firstGameScoredGoals: null,
+        secondGameScoredGoals: null,
+        thirdGameScoredGoals: null,
+        firstGameConcededGoals: null,
+        secondGameConcededGoals: null,
+        thirdGameConcededGoals: null
       },
       {
         teamName: "",
         pointsTotal: 0,
-        goalsScoredTotal: 0,
-        goalsConcededTotal: 0,
+        scoredGoalsTotal: 0,
+        concededGoalsTotal: 0,
         firstGamePoints: 0,
         secondGamePoints: 0,
         thirdGamePoints: 0,
-        firstGameResult: "",
-        secondGameResult: "",
-        thirdGameResult: "",
-        firstGameConceded: "",
-        secondGameConceded: "",
-        thirdGameConceded: ""
+        firstGameScoredGoals: null,
+        secondGameScoredGoals: null,
+        thirdGameScoredGoals: null,
+        firstGameConcededGoals: null,
+        secondGameConcededGoals: null,
+        thirdGameConcededGoals: null
       },
       {
         teamName: "",
         pointsTotal: 0,
-        goalsScoredTotal: 0,
-        goalsConcededTotal: 0,
+        scoredGoalsTotal: 0,
+        concededGoalsTotal: 0,
         firstGamePoints: 0,
         secondGamePoints: 0,
         thirdGamePoints: 0,
-        firstGameResult: "",
-        secondGameResult: "",
-        thirdGameResult: "",
-        firstGameConceded: "",
-        secondGameConceded: "",
-        thirdGameConceded: ""
+        firstGameScoredGoals: null,
+        secondGameScoredGoals: null,
+        thirdGameScoredGoals: null,
+        firstGameConcededGoals: null,
+        secondGameConcededGoals: null,
+        thirdGameConcededGoals: null
       }
     ];
     
@@ -73,3 +73,5 @@ export class League {
       this.teams[3].teamName = team4;
     };
 }
+
+
