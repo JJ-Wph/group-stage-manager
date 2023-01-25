@@ -12,6 +12,7 @@ Techstack:
 * Typescript
 * Vite
 * Pinia
+* Vue-chartJS
 
 ## Screen
 ![obraz](https://user-images.githubusercontent.com/71273681/214368370-334b8baf-50ad-431d-b21d-6be9027f42d4.png)
