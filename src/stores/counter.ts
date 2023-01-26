@@ -4,6 +4,7 @@ export class League {
     teams: Array<any> = [
       {
         teamName: "",
+        teamId: 1,
         pointsTotal: 0,
         scoredGoalsTotal: 0,
         concededGoalsTotal: 0,
@@ -19,6 +20,7 @@ export class League {
       },
       {
         teamName: "",
+        teamId: 2,
         pointsTotal: 0,
         scoredGoalsTotal: 0,
         concededGoalsTotal: 0,
@@ -34,6 +36,7 @@ export class League {
       },
       {
         teamName: "",
+        teamId: 3,
         pointsTotal: 0,
         scoredGoalsTotal: 0,
         concededGoalsTotal: 0,
@@ -49,6 +52,7 @@ export class League {
       },
       {
         teamName: "",
+        teamId: 4,
         pointsTotal: 0,
         scoredGoalsTotal: 0,
         concededGoalsTotal: 0,

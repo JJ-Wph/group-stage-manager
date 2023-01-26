@@ -83,10 +83,10 @@
     for(let i = 0; i < leaguesList.length; i++) {
       if(leaguesList[i].id === searchedId.value) {
         loadedLeague = leaguesList[i];
-        team1.value = loadedLeague.teams[0].teamName;
-        team2.value = loadedLeague.teams[1].teamName;
-        team3.value = loadedLeague.teams[2].teamName;
-        team4.value = loadedLeague.teams[3].teamName;
+        team1.value = specifiedId(1).teamName;
+        team2.value = specifiedId(2).teamName;
+        team3.value = specifiedId(3).teamName;
+        team4.value = specifiedId(4).teamName;
         isLoaded.value = true;
       } else {
         wrongId.value = true;
@@ -97,6 +97,10 @@
   function specifiedTeam(v) {
     return loadedLeague.teams.find(item => item.teamName === v)
 }
+
+  function specifiedId(v) {
+      return loadedLeague.teams.find(item => item.teamId === v)
+  }
 
 </script>
 
