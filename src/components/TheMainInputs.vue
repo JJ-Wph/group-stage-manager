@@ -111,6 +111,9 @@
     return props.league.teams.find(item => item.teamName === v)
   }
 
+  function sortTable() {
+    return props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+  }
 
   function activateMatchday() {
     if(selectedMatchday.value === 'Matchday 1') {
@@ -135,21 +138,25 @@
       awayTeam.firstGamePoints = 0;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
+      sortTable();
     } else if(homeTeam.firstGameScoredGoals < awayTeam.firstGameScoredGoals) {
       awayTeam.firstGamePoints = 3;
       homeTeam.firstGamePoints = 0;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
+      sortTable();
     } else if(homeTeam.firstGameScoredGoals === "" && awayTeam.firstGameScoredGoals === "") {
-      homeTeam.firstGamePoints = null;
-      awayTeam.firstGamePoints = null;
-      homeTeam.firstGameConcededGoals = null;
-      awayTeam.firstGameConcededGoals = null;
+      homeTeam.firstGamePoints = 0;
+      awayTeam.firstGamePoints = 0;
+      homeTeam.firstGameConcededGoals = 0;
+      awayTeam.firstGameConcededGoals = 0;
+      sortTable();
     } else if(homeTeam.firstGameScoredGoals === awayTeam.firstGameScoredGoals) {
       homeTeam.firstGamePoints = 1;
       awayTeam.firstGamePoints = 1;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
+      sortTable();
     }
   }
 
@@ -165,16 +172,17 @@
       homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
       awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
     } else if(homeTeam.secondGameScoredGoals === "" && awayTeam.secondGameScoredGoals === "") {
-      homeTeam.secondGamePoints = null;
-      awayTeam.secondGamePoints = null;
-      homeTeam.secondGameConcededGoals = null;
-      awayTeam.secondGameConcededGoals = null;
+      homeTeam.secondGamePoints = 0;
+      awayTeam.secondGamePoints = 0;
+      homeTeam.secondGameConcededGoals = 0;
+      awayTeam.secondGameConcededGoals = 0;
     } else if(homeTeam.secondGameScoredGoals === awayTeam.secondGameScoredGoals) {
       homeTeam.secondGamePoints = 1;
       awayTeam.secondGamePoints = 1;
       homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
       awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
     }
+    sortTable();
   }
   
   function addThirdResult(homeTeam, awayTeam) {
@@ -189,16 +197,17 @@
       homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
       awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
     } else if(homeTeam.thirdGameScoredGoals === "" && awayTeam.thirdGameScoredGoals === "") {
-      homeTeam.thirdGamePoints = null;
-      awayTeam.thirdGamePoints = null;
-      homeTeam.thirdGameConcededGoals = null;
-      awayTeam.thirdGameConcededGoals = null;
+      homeTeam.thirdGamePoints = 0;
+      awayTeam.thirdGamePoints = 0;
+      homeTeam.thirdGameConcededGoals = 0;
+      awayTeam.thirdGameConcededGoals = 0;
     } else if(homeTeam.thirdGameScoredGoals === awayTeam.thirdGameScoredGoals) {
       homeTeam.thirdGamePoints = 1;
       awayTeam.thirdGamePoints = 1;
       homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
       awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
     } 
+    sortTable();
   }
 </script>
 
