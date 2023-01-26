@@ -4,15 +4,21 @@
 Group Stage Manager is an football group stage manager for four teams. 
 
 Project is in **Beta** version.
+Not responsive yet on mobile devices
+
 
 Techstack:
 * Vue 3
 * Typescript
 * Vite
 * Pinia
+* Vue-chartJS
 
 ## Screen
-![obraz](https://user-images.githubusercontent.com/71273681/210081854-c7055066-78f7-445d-946a-b3961077a1f0.png)
+![obraz](https://user-images.githubusercontent.com/71273681/214368370-334b8baf-50ad-431d-b21d-6be9027f42d4.png)
+
+![obraz](https://user-images.githubusercontent.com/71273681/214368219-04f3ce80-4f9c-44c3-8846-2fb5f980edae.png)
+
 
 
 
