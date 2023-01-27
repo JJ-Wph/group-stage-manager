@@ -1,7 +1,9 @@
 <template>
-    <div class="chartDiv">
-        <h1>Goals via Team</h1>
-        <Doughnut :style="myStyles" :data="data" :options="options" />
+    <div class="mainDiv">
+        <h2>Goals per Team</h2>
+        <div class="chartDiv">
+            <Doughnut :style="myStyles" :data="data" :options="options" />
+        </div>
     </div>
 </template>
 
@@ -58,15 +60,22 @@ const myStyles = () => {
 
 
 <style scoped>
-.chartDiv {
+.mainDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    grid-area: 1 / 1 / 4 / 3;
+    grid-area: TheGoalsChart;
     background-color: #181f21;
   }
+
+.chartDiv {
+    display: flex;
+    align-items: center;
+    height: 90%;
+    width: 90%;
+}
 </style>
 
 

@@ -39,7 +39,7 @@ const props = defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-area: 1 / 6 / 4 / 9;
+    grid-area: TheTable;
   }
 
   table { 
@@ -50,6 +50,9 @@ const props = defineProps({
     text-align: center;
   }
   
+  th, td, tr {
+    font-size: 1.8vw;
+  }
   tr > th {
     height: 2rem;
     background-color: #053273;

@@ -10,59 +10,21 @@
   </main>
 
   <main class="main-grid" v-else>
-
     <TheMainInputs :league="loadedLeague" :team1="team1" :team2="team2" :team3="team3" :team4="team4"/>
     <TheGoalsChart :league="loadedLeague"/>
     <TheTable :league="loadedLeague"/>
-
-    <div class="matchday-schedule">
-        <MatchdayContainer>
-          <template #header>
-            <h2>Matchday 1</h2>
-          </template>
-          <template #default>
-            <div class="pair">
-              <p class="team-paragraph">{{specifiedTeam(team1).teamName}}</p><p>{{specifiedTeam(team1).firstGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team2).firstGameScoredGoals}}</p><p class="team-paragraph">{{specifiedTeam(team2).teamName }}</p>
-            </div>
-            <div class="pair">
-              <p class="team-paragraph">{{specifiedTeam(team3).teamName}}</p><p>{{specifiedTeam(team3).firstGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team4).firstGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p>
-            </div>
-          </template>
-      </MatchdayContainer>
-      <MatchdayContainer>
-        <template #header>
-          <h2>Matchday 2</h2>
-        </template>
-        <div class="pair">
-          <p class="team-paragraph">{{specifiedTeam(team2).teamName}}</p><p>{{specifiedTeam(team2).secondGameScoredGoals}}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team3).secondGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team3).teamName }}</p>
-        </div>
-        <div class="pair">
-          <p class="team-paragraph">{{specifiedTeam(team1).teamName }}</p><p>{{specifiedTeam(team1).secondGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team4).secondGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p>
-        </div>
-      </MatchdayContainer>
-      <MatchdayContainer>
-        <template #header>
-          <h2>Matchday 3</h2>
-        </template>
-        <div class="pair">
-          <p class="team-paragraph">{{specifiedTeam(team3).teamName }}</p><p>{{specifiedTeam(team3).thirdGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team1).thirdGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team1).teamName }}</p>
-        </div>
-        <div class="pair">
-          <p class="team-paragraph">{{specifiedTeam(team4).teamName }}</p><p>{{specifiedTeam(team4).thirdGameScoredGoals }}</p><p class="vs-paragraph">:</p><p>{{specifiedTeam(team2).thirdGameScoredGoals }}</p><p class="team-paragraph">{{specifiedTeam(team2).teamName }}</p>
-        </div>
-      </MatchdayContainer>
-    </div>
+    <TheMatchdaySchedule :league="loadedLeague" :team1="team1" :team2="team2" :team3="team3" :team4="team4" />
   </main>
 </template>
 
 <script setup lang="ts">
   import TheHeader from '@/components/TheHeader.vue';
   import PrimaryContainer from '@/components/PrimaryContainer.vue';
-  import MatchdayContainer from '@/components/MatchdayContainer.vue'
   import PrimaryButton from '@/components/PrimaryButton.vue';
   import TheTable from '@/components/TheTable.vue';
   import TheGoalsChart from '@/components/TheGoalsChart.vue';
   import TheMainInputs from '@/components/TheMainInputs.vue';
+  import TheMatchdaySchedule from '@/components/TheMatchdaySchedule.vue';
   import { ref } from 'vue';
   import { useLeagueStore } from '@/stores/leagueStore'
 
@@ -94,43 +56,31 @@
     }
   };
 
-  function specifiedTeam(v) {
-    return loadedLeague.teams.find(item => item.teamName === v)
-}
-
   function specifiedId(v) {
-      return loadedLeague.teams.find(item => item.teamId === v)
+    return loadedLeague.teams.find(item => item.teamId === v)
   }
 
 </script>
 
 <style>
 .main-grid {
-    display: grid;
+    display: grid; 
+    background-color: #080c0d;
     height: 100vh;
     width: 100vw;
-    background-color: #080c0d;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0.4rem;
     grid-row-gap: 0.4rem; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-areas: 
+      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+      "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"
+      "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"; 
 }
 
-.matchday-schedule {
-  display: flex;
-  grid-area: 4 / 1 / 6 / 9;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #181f21;
-}
 
-.pair {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
 
 .vs-paragraph {
   display: flex;
@@ -161,4 +111,34 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+@media (orientation: portrait) {
+    .main-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-div > * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-grid {
+      grid-template-areas: 
+  "TheMainInputs"
+  "TheTable"
+  "TheMatchdaySchedule"
+  "TheGoalsChart"
+    }
+
+
+
+
+}
+
 </style>
+
+

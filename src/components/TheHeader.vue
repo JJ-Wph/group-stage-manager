@@ -26,7 +26,7 @@
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: 5vw;
     margin: 0; 
 }
 
@@ -35,14 +35,20 @@ h1:last-of-type {
 }
 
 p {
-    font-size: 2rem;
+    font-size: 2vw;
     margin: 0;
 }
 
 p:last-of-type {
     margin-bottom: 2.5rem;
 }
+
+@media screen and (max-width: 1080px) {
+    .container {
+        margin: 1rem;
+    }
+}
 </style>
 <script setup lang="ts">
-import PrimaryButton from '@/components/PrimaryButton.vue';
+    import PrimaryButton from '@/components/PrimaryButton.vue';
 </script>

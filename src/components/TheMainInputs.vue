@@ -1,6 +1,6 @@
 <template>
   <div class="side-bar">
-    <h1>{{props.league.leagueName}}</h1>
+    <h2>{{props.league.leagueName}}</h2>
     
     <div class="matchday-result-selector">
       <PrimaryButton v-if="!resultDiv" @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
@@ -112,7 +112,7 @@
   }
 
   function sortTable() {
-    return props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+    props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
   }
 
   function activateMatchday() {
@@ -138,25 +138,25 @@
       awayTeam.firstGamePoints = 0;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
-      sortTable();
+      sortTable
     } else if(homeTeam.firstGameScoredGoals < awayTeam.firstGameScoredGoals) {
       awayTeam.firstGamePoints = 3;
       homeTeam.firstGamePoints = 0;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
-      sortTable();
+      sortTable
     } else if(homeTeam.firstGameScoredGoals === "" && awayTeam.firstGameScoredGoals === "") {
       homeTeam.firstGamePoints = 0;
       awayTeam.firstGamePoints = 0;
       homeTeam.firstGameConcededGoals = 0;
       awayTeam.firstGameConcededGoals = 0;
-      sortTable();
+      sortTable
     } else if(homeTeam.firstGameScoredGoals === awayTeam.firstGameScoredGoals) {
       homeTeam.firstGamePoints = 1;
       awayTeam.firstGamePoints = 1;
       homeTeam.firstGameConcededGoals = awayTeam.firstGameScoredGoals;
       awayTeam.firstGameConcededGoals = homeTeam.firstGameScoredGoals;
-      sortTable();
+      sortTable;
     }
   }
 
@@ -182,7 +182,7 @@
       homeTeam.secondGameConcededGoals = awayTeam.secondGameScoredGoals;
       awayTeam.secondGameConcededGoals = homeTeam.secondGameScoredGoals;
     }
-    sortTable();
+    sortTable;
   }
   
   function addThirdResult(homeTeam, awayTeam) {
@@ -207,7 +207,7 @@
       homeTeam.thirdGameConcededGoals = awayTeam.thirdGameScoredGoals;
       awayTeam.thirdGameConcededGoals = homeTeam.thirdGameScoredGoals;
     } 
-    sortTable();
+    sortTable;
   }
 </script>
 
@@ -220,7 +220,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  grid-area: 1 / 3 / 4 / 6; 
+  grid-area: TheMainInputs; 
   background-color: #181f21;
 }
 
