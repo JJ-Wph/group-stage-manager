@@ -71,4 +71,16 @@
   align-items: center;
   width: 100%;
 }
+
+.vs-paragraph {
+  display: flex;
+  align-items: flex-end;
+}
+
+.team-paragraph {
+  display: flex;
+  justify-content: center;
+  min-width: 10rem;
+  max-width: 20rem;
+}
 </style>

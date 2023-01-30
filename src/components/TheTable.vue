@@ -24,12 +24,15 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
 
 const props = defineProps({
     league: Object
 })
 
-// props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+watch(props.league.teams, () => {
+  return props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+})
 
 
 </script>

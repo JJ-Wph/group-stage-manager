@@ -13,30 +13,16 @@
   align-items: center;
 }
 
-.main-div { 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
-  width: 100vw;
-}
-
-input[type=text] {
-  width: 18rem;
-  height: 4rem;
-  margin: 1rem;
-  border: 0;
-  border-bottom: 0.1rem solid #f4f1f1;
-  color: #f4f1f1;
-  background: none;
-}
-
-input[type=text]:focus {
-  outline: none;
-}
-
 .error{
   color: red;
 }
+
+@media screen and (max-width: 1080px) {
+  #app {
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+  }
+}
+
 </style>

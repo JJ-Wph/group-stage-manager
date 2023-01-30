@@ -14,7 +14,7 @@
       align-items: center;
       width: 40rem;
       height: 60rem;
-      margin: 0 30rem 0 0;
+      margin: 1rem;
       background-color: #3e2fc46b;
       font-size: 1.25rem;
     }
@@ -22,5 +22,14 @@
   h1 {
     text-align: center;
     margin: 2rem 0 2rem 0;
+  }
+
+  @media screen and (max-width: 1080px) {
+    div {
+      margin: 0;
+      width: 25rem;
+      height: 35rem;
+    }
+    
   }
 </style>

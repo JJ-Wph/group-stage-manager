@@ -80,19 +80,15 @@
       "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"; 
 }
 
-
-
-.vs-paragraph {
+.main-div { 
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  width: 100vw;
 }
 
-.team-paragraph {
-  display: flex;
-  justify-content: center;
-  min-width: 10rem;
-  max-width: 20rem;
-}
 
 input[type=number] {
   text-align: center;
@@ -106,13 +102,27 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input[type=text] {
+  width: 18rem;
+  height: 4rem;
+  margin: 1rem;
+  border: 0;
+  border-bottom: 0.1rem solid #f4f1f1;
+  color: #f4f1f1;
+  background: none;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-@media (orientation: portrait) {
+@media screen and (max-width: 1080px) {
     .main-div {
       display: flex;
       flex-direction: column;
@@ -128,13 +138,16 @@ input::-webkit-inner-spin-button {
 
     .main-grid {
       grid-template-areas: 
-  "TheMainInputs"
-  "TheTable"
-  "TheMatchdaySchedule"
-  "TheGoalsChart"
+      "TheMainInputs"
+      "TheTable"
+      "TheMatchdaySchedule"
+      "TheGoalsChart"
     }
 
-
+    input[type=text] {
+      width: 16rem;
+      height: 2rem;
+    }
 
 
 }

@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 0 0 0 30rem;
+    margin: 1rem 1rem 1rem 20rem;
 }
 
 .button-container {
@@ -26,7 +26,7 @@
 }
 
 h1 {
-    font-size: 5vw;
+    font-size: 4vw;
     margin: 0; 
 }
 
@@ -46,6 +46,15 @@ p:last-of-type {
 @media screen and (max-width: 1080px) {
     .container {
         margin: 1rem;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 8vw;
+    }
+
+    p {
+        font-size: 4vw;
     }
 }
 </style>
