@@ -66,4 +66,10 @@ watch(props.league.teams, () => {
     padding: 0;
     background-color: #0c2634;
   }
+
+  @media screen and (max-width: 1080px) {
+    th, td, tr {
+      font-size: 3.4vw
+    }
+  }
 </style>

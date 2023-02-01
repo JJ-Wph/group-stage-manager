@@ -80,7 +80,19 @@
 .team-paragraph {
   display: flex;
   justify-content: center;
-  min-width: 10rem;
   max-width: 20rem;
+  white-space: nowrap;
+}
+
+
+@media screen and (max-width: 1080px) {
+
+  .matchday-schedule {
+    flex-direction: column;
+  }
+
+  .vs-paragraph, .team-paragraph, p {
+    font-size: 2.2vw
+  }
 }
 </style>

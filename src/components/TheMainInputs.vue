@@ -275,8 +275,7 @@
 .team-paragraph {
   display: flex;
   justify-content: center;
-  min-width: 10rem;
-  max-width: 20rem;
+  max-width: 10rem;
 }
 
 select {
@@ -291,5 +290,15 @@ select {
 
 option {
   border: none;
+}
+
+@media screen and (max-width: 1080px) {
+
+  .matchday-result-inputs {
+    margin: 1rem 0 1rem 0;;
+  }
+  .vs-paragraph, .team-paragraph {
+    font-size: 2.2vw;
+  }
 }
 </style>

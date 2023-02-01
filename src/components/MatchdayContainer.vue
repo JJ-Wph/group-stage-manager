@@ -34,4 +34,11 @@
     flex-direction: column;
     justify-content: space-around;
   }
+
+  @media screen and (max-width: 1080px) {
+    .container {
+      height: 30%;
+      width: 90%;
+    }
+  }
 </style>

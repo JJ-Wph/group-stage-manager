@@ -66,8 +66,9 @@
 .main-grid {
     display: grid; 
     background-color: #080c0d;
-    height: 100vh;
+    height: calc(100vh - 0.8rem);
     width: 100vw;
+    border: 0.4rem solid black;
     grid-column-gap: 0.4rem;
     grid-row-gap: 0.4rem; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
@@ -137,11 +138,13 @@ input::-webkit-inner-spin-button {
     }
 
     .main-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr; 
       grid-template-areas: 
-      "TheMainInputs"
-      "TheTable"
-      "TheMatchdaySchedule"
-      "TheGoalsChart"
+      "TheTable TheMatchdaySchedule"
+      "TheTable TheMatchdaySchedule"
+      "TheMainInputs TheMatchdaySchedule"
+      "TheMainInputs TheGoalsChart"
     }
 
     input[type=text] {

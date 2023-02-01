@@ -45,6 +45,7 @@ const data = ref({
 
 const options = {
     responsive: true,
+    maintainAspectRatio: false,
 }
 
 
