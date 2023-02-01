@@ -1,6 +1,6 @@
 <template>
     <div class="mainDiv">
-        <h2>Goals per Team</h2>
+        <h2>Goals per team</h2>
         <div class="chartDiv">
             <Doughnut :style="myStyles" :data="data" :options="options" />
         </div>
@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Title, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
 import { ref } from 'vue'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Title, Tooltip, Legend);
 
 const props = defineProps({
     league: Object
@@ -25,8 +25,7 @@ const data = ref({
         props.league.teams[2].teamName,
         props.league.teams[3].teamName,
     ],
-    datasets: [
-        {
+    datasets: [{
             backgroundColor: [
                 '#41B883', 
                 '#E46651', 
@@ -38,23 +37,35 @@ const data = ref({
                 props.league.teams[1].scoredGoalsTotal,
                 props.league.teams[2].scoredGoalsTotal,
                 props.league.teams[3].scoredGoalsTotal,
-            ]
-        }
-    ]
+            ],
+    }]
 })
 
 const options = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            display: true,
+            position: 'bottom',
+            boxWidth: 20,
+            boxHeight: 40,
+            fontColor: 'blue',
+            labels: {
+                boxWidth: 15,
+                font: {
+                    size: 12
+                }
+            }
+        }
+    }
 }
-
 
 const myStyles = () => {
     return {
         height: '50%',
         width: '50%',
     }
-
 }
 
 </script>
@@ -75,7 +86,7 @@ const myStyles = () => {
     display: flex;
     align-items: center;
     height: 90%;
-    width: 90%;
+    width: 90%
 }
 </style>
 
