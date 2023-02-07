@@ -60,7 +60,7 @@ p:last-of-type {
 
 @media screen and (max-width: 1080px) and (orientation: landscape) {
     .container {
-        margin: 1rem 1rem 1rem 10rem;
+        margin: 1rem 10rem 1rem 10rem;
     }
 
     h1 {
