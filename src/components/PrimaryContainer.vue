@@ -14,7 +14,7 @@
       align-items: center;
       width: 40rem;
       height: 60rem;
-      margin: 1rem;
+      margin: 1rem 20rem 1rem 1rem;
       background-color: #3e2fc46b;
       font-size: 1.25rem;
     }
@@ -30,6 +30,13 @@
       width: 25rem;
       height: 35rem;
     }
-    
+  }
+
+  @media screen and (max-width: 1080px) and (orientation: landscape) {
+    div {
+      margin: 1rem 10rem 1rem 1rem;
+      width: 22rem;
+      height: 26rem;
+    }
   }
 </style>

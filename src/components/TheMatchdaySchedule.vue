@@ -85,10 +85,11 @@
 }
 
 
-@media screen and (max-width: 1080px) {
+@media screen and (orientation: portrait) {
 
   .matchday-schedule {
     flex-direction: column;
+    justify-content: flex-start;
   }
 
   .vs-paragraph, .team-paragraph, p {

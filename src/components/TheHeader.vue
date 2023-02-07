@@ -57,6 +57,20 @@ p:last-of-type {
         font-size: 4vw;
     }
 }
+
+@media screen and (max-width: 1080px) and (orientation: landscape) {
+    .container {
+        margin: 1rem 1rem 1rem 10rem;
+    }
+
+    h1 {
+        font-size: 4vw;
+    }
+
+    p {
+        font-size: 2vw;
+    }
+}
 </style>
 <script setup lang="ts">
     import PrimaryButton from '@/components/PrimaryButton.vue';

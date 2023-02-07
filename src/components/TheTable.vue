@@ -62,14 +62,14 @@ watch(props.league.teams, () => {
   }
   
   tr > td {
-    height: 6rem;
+    height: 5rem;
     padding: 0;
     background-color: #0c2634;
   }
 
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 1080px) and (orientation: portrait) {
     th, td, tr {
-      font-size: 3.4vw
+      font-size: 3.4vw;
     }
   }
 </style>

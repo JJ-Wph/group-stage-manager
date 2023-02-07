@@ -38,7 +38,23 @@
   @media screen and (max-width: 1080px) {
     .container {
       height: 30%;
-      width: 90%;
+      width: 100%;
+      margin: 1rem 0rem 1rem 0rem;
+    }
+
+    .container:first-child {
+      margin: 0rem 0rem 1rem 0rem;
+    }
+  }
+
+  @media screen and (max-width: 1080px) and (orientation: landscape){
+    .container {
+      width: 30%;
+      height: 75%;
+      margin: 1rem;
+    }
+    .container:first-child {
+      margin: 1rem;
     }
   }
 </style>

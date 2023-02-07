@@ -1,9 +1,9 @@
 <template>
   <div class="side-bar">
-    <h2>{{props.league.leagueName}}</h2>
+    <h2 class="league-title">{{props.league.leagueName}}</h2>
     
     <div class="matchday-result-selector">
-      <PrimaryButton v-if="!resultDiv" @click="resultDiv = !resultDiv">Add Results</PrimaryButton>
+      <PrimaryButton v-if="!resultDiv" @click="resultDiv = !resultDiv">Select Matchday</PrimaryButton>
       <div class="matchday-result-selector-options" v-if="resultDiv">
         <select v-model="selectedMatchday">
           <option value="Matchday 1">Matchday 1</option>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="matchday-result" v-if="m1selected">
-      <h2>Matchday 1</h2>
+      <h2 class="matchday">Matchday 1</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team1).teamName}}</p>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="matchday-result" v-if="m2selected">
-      <h2>Matchday 2</h2>
+      <h2 class="matchday">Matchday 2</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team2).teamName }}</p>
@@ -63,7 +63,7 @@
     </div>
 
     <div class="matchday-result" v-if="m3selected">
-      <h2>Matchday 3</h2>
+      <h2 class="matchday">Matchday 3</h2>
       <div class="matchday-result-inputs">
         <div class="pair">
           <p class="team-paragraph">{{ specifiedTeam(team3).teamName }}</p>
@@ -255,7 +255,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 3rem 0 3rem 0;
+  margin: 1rem 0 1rem 0;
 }
 
 .pair {
@@ -295,10 +295,34 @@ option {
 @media screen and (max-width: 1080px) {
 
   .matchday-result-inputs {
-    margin: 1rem 0 1rem 0;;
+    margin: 1rem 0 1rem 0;
   }
   .vs-paragraph, .team-paragraph {
     font-size: 2.2vw;
+  }
+}
+
+@media screen and (max-width: 1080px) and (orientation: landscape) {
+
+  .league-title {
+    display: none;
+  }
+  .matchday {
+    font-size: 1.6vw;
+  }
+  .matchday-result {
+    margin: 0.2rem 0 0.2rem 0;
+  }
+  .matchday-result-inputs {
+    margin: 0.2rem 0 0.2rem 0;
+  }
+
+  .matchday-result-selector {
+    margin: 0.2rem 0 0.2rem 0;
+  }
+
+  .vs-paragraph, .team-paragraph {
+    font-size: 1vw;
   }
 }
 </style>

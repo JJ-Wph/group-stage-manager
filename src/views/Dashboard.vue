@@ -63,29 +63,30 @@
 </script>
 
 <style>
+
 .main-grid {
-    display: grid; 
-    background-color: #080c0d;
-    height: calc(100vh - 0.8rem);
-    width: 100vw;
-    border: 0.4rem solid black;
-    grid-column-gap: 0.4rem;
-    grid-row-gap: 0.4rem; 
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-areas: 
-      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
-      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
-      "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
-      "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"
-      "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"; 
+  display: grid; 
+  background-color: #080c0d;
+  height: calc(100vh - 0.8rem);
+  width: 100vw;
+  border: 0.4rem solid black;
+  grid-column-gap: 0.4rem;
+  grid-row-gap: 0.4rem; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-areas: 
+    "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+    "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+    "TheGoalsChart TheGoalsChart TheMainInputs TheMainInputs TheMainInputs TheTable TheTable"
+    "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"
+    "TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule TheMatchdaySchedule"; 
 }
 
 .main-div { 
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 100vh;
   width: 100vw;
 }
@@ -108,7 +109,7 @@ input[type=text] {
   height: 4rem;
   margin: 1rem;
   border: 0;
-  border-bottom: 0.1rem solid #f4f1f1;
+  border-bottom: 0.1rem solid #f4f1f17b;
   color: #f4f1f1;
   background: none;
 }
@@ -123,38 +124,42 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-@media screen and (max-width: 1080px) {
-    .main-div {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+@media screen and (orientation: portrait) {
+  .main-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .main-div > * {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .main-div > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .main-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr; 
-      grid-template-areas: 
-      "TheTable TheMatchdaySchedule"
-      "TheTable TheMatchdaySchedule"
-      "TheMainInputs TheMatchdaySchedule"
-      "TheMainInputs TheGoalsChart"
-    }
+  .main-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    grid-template-areas: 
+    "TheTable TheMatchdaySchedule"
+    "TheTable TheMatchdaySchedule"
+    "TheMainInputs TheMatchdaySchedule"
+    "TheMainInputs TheGoalsChart"
+  }
 
-    input[type=text] {
-      width: 16rem;
-      height: 2rem;
-    }
-
-
+  input[type=text] {
+    width: 16rem;
+    height: 2rem;
+  }
 }
 
+@media screen and (max-width: 1080px) and (orientation: landscape) {
+  input[type=text] {
+    width: 14rem;
+    height: 1.6rem;
+  }
+}
 </style>
 
 
