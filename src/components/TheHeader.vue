@@ -66,7 +66,7 @@ p:last-of-type {
     h1 {
         font-size: 4vw;
     }
-
+    
     p {
         font-size: 2vw;
     }
