@@ -8,29 +8,30 @@
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, ArcElement, Title, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-ChartJS.register(ArcElement, Title, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const props = defineProps({
     league: Object
 })
 
-const data = ref({
-    labels: [
-        props.league.teams[0].teamName,
-        props.league.teams[1].teamName,
-        props.league.teams[2].teamName,
-        props.league.teams[3].teamName,
-    ],
-    datasets: [{
+const data = computed(() => {
+    return {    
+        labels: [
+            props.league.teams[0].teamName,
+            props.league.teams[1].teamName,
+            props.league.teams[2].teamName,
+            props.league.teams[3].teamName,
+        ],
+        datasets: [{
             backgroundColor: [
                 '#41B883', 
                 '#E46651', 
                 '#00D8FF', 
-                '#DD1B16'
+                '#DD1B16',
             ],
             data: [
                 props.league.teams[0].scoredGoalsTotal,
@@ -38,10 +39,11 @@ const data = ref({
                 props.league.teams[2].scoredGoalsTotal,
                 props.league.teams[3].scoredGoalsTotal,
             ],
-    }]
+        }]
+    }
 })
 
-const options = {
+const options = ref({
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -59,7 +61,7 @@ const options = {
             }
         }
     }
-}
+})
 
 const myStyles = () => {
     return {
