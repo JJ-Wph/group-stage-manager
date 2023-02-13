@@ -30,8 +30,12 @@ const props = defineProps({
     league: Object
 })
 
+function sortTable() {
+    props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+  }
+
 watch(props.league.teams, () => {
-  return props.league.teams.sort((a, b) => (a.pointsTotal < b.pointsTotal) ? 1 : -1);
+  sortTable()
 })
 
 

@@ -28,10 +28,10 @@ const data = computed(() => {
         ],
         datasets: [{
             backgroundColor: [
-                '#41B883', 
-                '#E46651', 
-                '#00D8FF', 
-                '#DD1B16',
+                '#053eaa', 
+                '#a600ff', 
+                '#00a87b', 
+                '#a8002a',
             ],
             data: [
                 props.league.teams[0].scoredGoalsTotal,
